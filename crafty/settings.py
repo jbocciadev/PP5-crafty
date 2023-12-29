@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-6!5y#5f95-pej%eeiw0bbj5p@6quwjwc1i+eoc=3%j#%ml6^3@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jbocciadev-pp5crafty-iqh0b6vp2lx.ws-eu107.gitpod.io']
+ALLOWED_HOSTS = ['8000-jbocciadev-pp5crafty-iqh0b6vp2lx.ws-eu107.gitpod.io', '127.0.0.1']
 
 
 # Application definition
@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
     'home',
 ]
 
@@ -45,11 +46,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'crafty.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR,'templates'),
+            os.path.join(BASE_DIR,'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -60,6 +64,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
