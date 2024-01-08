@@ -57,6 +57,10 @@ body{
     color: white;
 }
 
+.bg-green {
+    background: #06d6a0;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
