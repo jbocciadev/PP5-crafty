@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     
     # User-defined
     'home',
+    'products',
 
     # Others
     'allauth',
