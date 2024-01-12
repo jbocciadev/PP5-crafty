@@ -1,5 +1,5 @@
 ---
-name: 'EPIC: '
+name: EPIC Template
 about: Project Epic Template
 title: ''
 labels: EPIC
@@ -7,4 +7,6 @@ assignees: jbocciadev
 
 ---
 
-<!-- EPIC:DATA  -->
+User stories for this Epic:
+<hr>
+- [ ]
