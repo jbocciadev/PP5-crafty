@@ -13,12 +13,13 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="category-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Educational toys
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Felt Books</a>
-                <a href="" class="dropdown-item">Playmats and Play Gyms</a>
+            <div class="dropdown-menu border-0" aria-labelledby="category-link">
+                <a href="{% url 'products' %}?category=felt_books" class="dropdown-item">Felt Books</a>
+                <a href="{% url 'products' %}?category=playmats_and_gyms" class="dropdown-item">Playmats and Play Gyms</a>
+                <a href="{% url 'products' %}?category=activity_packs" class="dropdown-item">Activity Packs</a>
             </div>
         </li>
 
@@ -27,9 +28,9 @@
                 Goody bag fillers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">For babies</a>
-                <a href="" class="dropdown-item">For toddlers</a>
-                <a href="" class="dropdown-item">For young children</a>
+                <a href="{% url 'products' %}?category=bag_fillers&age_group=babies" class="dropdown-item">For babies</a>
+                <a href="{% url 'products' %}?category=bag_fillers&age_group=toddlers" class="dropdown-item">For toddlers</a>
+                <a href="{% url 'products' %}?category=bag_fillers&age_group=children" class="dropdown-item">For young children</a>
             </div>
         </li>
 
