@@ -1,7 +1,7 @@
 ---
 name: EPIC Template
 about: Project Epic Template
-title: ''
+title: 'EPIC: '
 labels: EPIC
 assignees: jbocciadev
 
