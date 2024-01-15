@@ -24,10 +24,14 @@ def all_products(request):
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
 
+            if sortkey == 'category':
+                sortkey = 'category__name'
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
+
             products = products.order_by(sortkey)
 
         if 'q' in request.GET:
@@ -36,29 +40,28 @@ def all_products(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect (reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query)
             print(queries)
             products = products.filter(queries)
 
-        else:
 
-            q = Q()
+        compound_q = Q()
 
-            if 'category' in request.GET:
-                categories = request.GET['category'].split(',')
-                if len(categories) == 1:
-                    q &= Q(category__name__iexact=categories[0])
-                else:
-                    q &= Q(category__name__in=categories)
-            
-            if 'age_group' in request.GET:
-                age_group = request.GET['age_group']
-                q &= Q(age_group__name__iexact=age_group)
-            
-            print(q)
-            products = products.filter(q)        
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            if len(categories) == 1:
+                compound_q &= Q(category__name__iexact=categories[0])
+            else:
+                compound_q &= Q(category__name__in=categories)
+        
+        if 'age_group' in request.GET:
+            age_group = request.GET['age_group']
+            compound_q &= Q(age_group__name__iexact=age_group)
+        
+        # print(compound_q)
+        products = products.filter(compound_q)        
 
-        current_sorting = f'{sort}_{direction}'
+    current_sorting = f'{sort}_{direction}'
 
     context = {
         'products': products,
