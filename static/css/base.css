@@ -79,7 +79,7 @@ body{
     border: 1px solid black !important;
 }
 
-.overlay {
+.overlay, .overlay-single {
     height: 100%;
     width: 100%;
     top: 0;
@@ -88,6 +88,10 @@ body{
     background: #ffd166;
     opacity: 0.2;
     z-index: -1;
+}
+
+.overlay-single {
+    opacity: 1;
 }
 
 a.category-badge > span.badge:hover {
