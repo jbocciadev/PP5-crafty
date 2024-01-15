@@ -57,15 +57,19 @@ def all_products(request):
                 compound_q &= Q(category__name__iexact=categories[0])
             else:
                 compound_q &= Q(category__name__in=categories)
+            
+            categories = Category.objects.filter(name__in=categories)
         
         if 'age_group' in request.GET:
             age_group = request.GET['age_group']
             compound_q &= Q(age_group__name__iexact=age_group)
         
         # print(compound_q)
-        products = products.filter(compound_q)        
+        products = products.filter(compound_q)   
+
 
     current_sorting = f'{sort}_{direction}'
+    print(categories[0])
 
     context = {
         'products': products,
