@@ -69,7 +69,7 @@ def all_products(request):
 
 
     current_sorting = f'{sort}_{direction}'
-    print(categories[0])
+    # print(categories[0])
 
     context = {
         'products': products,
