@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # User-defined
     'home',
     'products',
+    'bag',
 
     # Others
     'allauth',
