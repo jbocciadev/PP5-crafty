@@ -26,6 +26,8 @@
             <div class="col">
                 {% if bag_items %}
                     <div class="table-responsive rounded">
+{{ bag_items }}
+
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
                                 <tr>
@@ -39,7 +41,12 @@
                             {% for item in bag_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        <img src="{{ item.product.image.url }}" class="img-fluid rounded">
+                                        {% if item.product.image %}
+                                            <img src="{{ item.product.image.url }}" class="img-fluid rounded">
+                                        {% else %}
+                                            <img src="https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" class="img-fluid rounded">
+                                        {% endif %}
+
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0"><strong>{{ item.product.name }}</strong></p>
@@ -49,7 +56,7 @@
                                         <p class="my-0">${{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <p class="my-0">{{ item.product.quantity }}</p>
+                                        <p class="my-0">{{ item.quantity }}</p>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">${{ item.product.price }}</p>
