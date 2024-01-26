@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -56,7 +57,7 @@
                                         <p class="my-0">€{{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        <form method="post" action="" class="update-form">
+                                        <form method="post" action="{% url 'adjust_bag' item.item_id %}" class="update-form">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -87,10 +88,10 @@
                                             </div>
                                         </form>
                                         <a class="update-link text-info">Update</a>
-                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-size="{{ item.size }}">Remove</a>
+                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product-size="{{ item.size }}">Remove</a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">€{{ item.product.price }}</p>
+                                        <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -145,23 +146,23 @@
     <script type="text/javascript">
         // Update quantity on click
         $('.update-link').click(function(e) {
-            var form = $(this).prev('.update_form');
+            var form = $(this).prev('.update-form');
             form.submit();
         });
     
         // Remove item and reload on click
         $('.remove-item').click(function(e) {
-            var csrf_token = "{{ csrf_token }}";
+            var csrfToken = "{{ csrf_token }}";
             var itemId = $(this).attr('id').split('remove_')[1];
-            var size = $(this).data('size');
+            var size = $(this).data('product_size');
             var url = `bag/remove/${itemId}`;
-            var data = {'csrfmiddlewaretoken': csrf_token, 'size': size};
+            var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
     
             $.post(url, data)
-            .done(function() {
-                location.reload();
-            })
-        });
+             .done(function() {
+                 location.reload();
+            });
+        })
     </script>
 
 {% endblock %}
