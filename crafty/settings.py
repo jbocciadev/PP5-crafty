@@ -1,5 +1,9 @@
 import os
+import dj_database_url
 from pathlib import Path
+
+if os.path.isfile('env.py'):
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,12 +13,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6!5y#5f95-pej%eeiw0bbj5p@6quwjwc1i+eoc=3%j#%ml6^3@'
+if 'SECRET_KEY' in os.environ:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+else:
+    SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jbocciadev-pp5crafty-iqh0b6vp2lx.ws-eu107.gitpod.io', '127.0.0.1']
+DEBUG = 'DEVELOPMENT' in os.environ
+
+if 'ALLOWED_HOSTS' in os.environ:
+    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS.append(os.environ.get('ALLOWED_HOSTS'))
+else:
+    ALLOWED_HOSTS = ['8000-jbocciadev-pp5crafty-iqh0b6vp2lx.ws-eu107.gitpod.io', '127.0.0.1']
 
 
 # Application definition
@@ -94,12 +106,17 @@ WSGI_APPLICATION = 'crafty.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
