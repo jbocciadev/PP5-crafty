@@ -119,6 +119,10 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+.bg-black {
+    background: #000 !important;
+}
+
 /* -------------------------------- bootstrap toasts */
 
 .message-container {
