@@ -35,7 +35,7 @@ def checkout(request):
             order = order_form.save()
             for item_id, item_data in bag.items():
                 try:
-                    product = Product.objects.get(pk=item_id)
+                    product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -54,10 +54,10 @@ def checkout(request):
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the items in your bag wasn't found in out database. "
+                        "One of the items in your bag wasn't found in our database. "
                         "Please call us for assistance!")
                     )
-                    order.delete
+                    order.delete()
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
