@@ -61,14 +61,14 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
-    def save(self, *args, **kwargs):
-        """
-        Override the original save method to set the line item total
-        and update the order total.
-        """
-        if not self.order_number:
-            self.lineitem_total = self.product.price * self.quantity
-            super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     """
+    #     Override the original save method to set the line item total
+    #     and update the order total.
+    #     """
+    #     if not self.order_number:
+    #         self.lineitem_total = self.product.price * self.quantity
+    #         super().save(*args, **kwargs)
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
