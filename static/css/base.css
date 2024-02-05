@@ -1,6 +1,4 @@
-/* * {    border: 1px solid red; } */
-
-html{
+html {
     height: 100%;
 }
 
@@ -8,17 +6,12 @@ header {
     background-color: #ffd166;
 }
 
-/* header * {
-    background-color:khaki;
-} */
-
-
-body{
+body {
     background: url('/media/crafty_background.jpg') no-repeat center center fixed;
     background-color: #06d6a0;
     background-size: cover;
-    height:calc(100vh - 164px);
-    color:#555;
+    height: calc(100vh - 164px);
+    color: #555;
     font-family: 'Gaegu';
     font-size: 1.2rem;
 }
@@ -67,6 +60,13 @@ body{
     border: 1px solid black;
  }
 
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
@@ -85,7 +85,6 @@ body{
     border: 1px solid black !important;
 }
 
-
 .overlay, .overlay-single {
     height: 100%;
     width: 100%;
@@ -102,14 +101,14 @@ body{
 }
 
 a.category-badge > span.badge:hover {
-    background:#212529 !important;
-    color:#fff !important;
+    background: #212529 !important;
+    color: #fff !important;
 }
 
 .btt-button {
     height: 42px;
-    width:42px;
-    position:fixed;
+    width: 42px;
+    position: fixed;
     bottom: 10px;
     right: 10px;
 }
@@ -122,6 +121,10 @@ a.category-badge > span.badge:hover {
 
 .bg-black {
     background: #000 !important;
+}
+
+input[name='q']::placeholder {
+    color: #aab7c4;
 }
 
 /* -------------------------------- bootstrap toasts */
@@ -138,7 +141,7 @@ a.category-badge > span.badge:hover {
 }
 
 .toast-capper {
-    height:2px;
+    height: 2px;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
@@ -201,6 +204,60 @@ a.category-badge > span.badge:hover {
   }
 }
 
+/* Allauth form formatting */
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem; /* mt-4 */
+    color: #6c757d; /* text-secondary */
+}
+
+.allauth-form-inner-content input {
+    border-color: #000;
+    border-radius: 0;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #000;
+    border: 1px solid #000;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+
+    /* standard bootstrap btn transitions */
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.allauth-form-inner-content button:hover,
+.allauth-form-inner-content input[type='submit']:hover {	
+	color: #fff;
+    background-color: #222;
+    border-color: #222;
+}
+
+.allauth-form-inner-content a {
+	color: #17a2b8; /* text-info */
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
@@ -217,7 +274,7 @@ a.category-badge > span.badge:hover {
 }
 
 
-/* Pad the top when the main navbar is hidden in smaller screens */
+/* Pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
