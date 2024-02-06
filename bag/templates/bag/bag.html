@@ -41,10 +41,11 @@
                             {% for item in bag_items %}
                                 <tr>
                                     <td class="p-3 w-25">
+                                        
                                         {% if item.product.image %}
-                                            <img src="{{ item.product.image.url }}" class="img-fluid rounded">
+                                            <img src="{{ item.product.image.url }}" class="img-fluid rounded alt="{{ item.product.name }}">
                                         {% else %}
-                                            <img src="https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" class="img-fluid rounded">
+                                            <img src="https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" class="img-fluid rounded" alt="{{ item.product.name }}">
                                         {% endif %}
 
                                     </td>
