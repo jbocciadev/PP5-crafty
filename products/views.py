@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category, Topic, Age_group
 
-# Create your views here.
+from .models import Product, Category, Topic, Age_group
+from .forms import ProductForm
+
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -48,7 +49,6 @@ def all_products(request):
             print(queries)
             products = products.filter(queries)
 
-
         compound_q = Q()
 
         if 'category' in request.GET:
@@ -64,12 +64,9 @@ def all_products(request):
             age_group = request.GET['age_group']
             compound_q &= Q(age_group__name__iexact=age_group)
         
-        # print(compound_q)
         products = products.filter(compound_q)   
 
-
     current_sorting = f'{sort}_{direction}'
-    # print(categories[0])
 
     context = {
         'products': products,
@@ -92,3 +89,13 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+def add_product(request):
+    """ Add a product to the store """
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
