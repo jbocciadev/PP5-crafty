@@ -183,7 +183,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
     #AWS Bucket config
-    AWS_STORAGE_BUCKET_NAME = 'boutique-ado-jbocciadev'
+    AWS_STORAGE_BUCKET_NAME = 'pp5-crafty'
     AWS_REGION_NAME = 'eu-west-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
