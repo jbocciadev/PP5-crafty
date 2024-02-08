@@ -131,6 +131,10 @@ input[name='q']::placeholder {
     background: rgba(255, 255, 255, .9);
 }
 
+#new-image {
+    background-color: #fff; 
+    color:#000;
+}
 /* -------------------------------- bootstrap toasts */
 
 .message-container {

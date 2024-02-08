@@ -14,7 +14,7 @@
       "**/CVS": true
    },
    "files.autoSave": "off",
-   "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+   "workbench.colorTheme": "Monokai Classic",
    "terminal.integrated.gpuAcceleration": "canvas",
    "editor.defaultFormatter": "HookyQR.beautify"
 }
