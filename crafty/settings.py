@@ -21,6 +21,7 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = True
 
 if 'ALLOWED_HOSTS' in os.environ:
     ALLOWED_HOSTS = []
