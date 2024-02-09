@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container h-100">
+        <div class="row h-100 overlay-single mx-0">
+            <div class="col-6 offset-1 offset-md-2 my-auto">
+                <h1 class="display-4 logo-font text-black">
+                    Oops!... <br>
+                    500 error!!!!!!!!!!!!
+                </h1>
+                <p>It's not you, it's us. Our server has run into some kind of issue</p>
+                <div class="my-5">
+                    <h4>
+                        <a href="{% url 'products' %}" 
+                            class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">
+                                Return to shop
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
