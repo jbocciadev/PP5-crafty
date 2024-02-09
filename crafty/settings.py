@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'crafty.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.2/ref/settings/# databases
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
@@ -140,7 +140,7 @@ else:
 
 
 # Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.2/ref/settings/# auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -182,14 +182,20 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
-    #AWS Bucket config
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # AWS Bucket config
     AWS_STORAGE_BUCKET_NAME = 'pp5-crafty'
     AWS_REGION_NAME = 'eu-west-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
-    #Static and Media files
+    # Static and Media files
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
@@ -200,7 +206,7 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en/3.2/ref/settings/# default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -208,12 +214,12 @@ FREE_DELIVERY_THRESHOLD = 50
 
 STANDARD_DELIVERY_PERCENTAGE = 10
 
-#Stripe variables
+# Stripe variables
 
 STRIPE_CURRENCY = 'eur'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
-#Email config
+# Email config
 DEFAULT_FROM_EMAIL = 'crafty@example.com'
