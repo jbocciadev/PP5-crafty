@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Product, Category, Age_group, Topic
+from .models import Product, Category, Age_group, Topic, Review
 
-# Register your models here.
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -17,6 +16,16 @@ class ProductAdmin(admin.ModelAdmin):
 
     ordering = ('sku',)
 
+
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'user',
+        'product',
+        'rating',
+        'review',
+    )
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
@@ -26,5 +35,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Review, ReviewAdmin)
 admin.site.register(Age_group)
 admin.site.register(Topic)

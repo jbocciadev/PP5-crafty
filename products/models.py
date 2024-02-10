@@ -1,11 +1,14 @@
 from django.db import models
+from django.db.models import Avg
+from django.contrib.auth.models import User
+
 
 class Category(models.Model):
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def get_friendly_name(self):
         return self.friendly_name
@@ -28,18 +31,53 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
+
+    def __init__(self, *args, **kwargs):
+        '''Overwriting the initialization method to calculate avg ratings 
+        whenever product is called'''
+
+        super().__init__(*args, **kwargs)
+        calculate_rating(self)
+# https://stackoverflow.com/questions/60481894/overwrite-django-model-init-method
 
 
 class Age_group(models.Model):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Topic(models.Model):
     name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
+
+
+class Review(models.Model):
+    user = models.ForeignKey(User, null=False,
+                             blank=False, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, null=False,
+                                blank=False, on_delete=models.CASCADE)
+    rating = models.IntegerField(null=False, blank=False, default=0)
+    review = models.TextField(null=False, blank=True, default='')
+
+    def save(self, *args, **kwargs):
+        '''Overriding save method to calculate avg rating
+        every time a new review is added'''
+
+        calculate_rating(self.product)
+        super(Review, self).save(*args, **kwargs)
+# https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
+
+
+def calculate_rating(self, *args, **kwargs):
+    '''Calculating average rating (to be called
+    whenever a new rating is added)'''
+
+    reviews = Review.objects.filter(product=self)
+    self.rating = reviews.aggregate(Avg('rating'))['rating__avg']
+    self.save()
+# https://stackoverflow.com/questions/74116689/how-to-count-reviews-for-a-product-in-django
