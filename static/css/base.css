@@ -231,6 +231,10 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+.review-score {
+    font-size: .9rem;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
