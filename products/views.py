@@ -89,9 +89,11 @@ def product_detail(request, product_id):
     # Append number of reviews to product
     product.num_reviews = Review.objects.filter(product=product).count()
     # https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
+    reviews = Review.objects.filter(product=product)
 
     context = {
-        'product': product
+        'product': product,
+        'reviews': reviews,
     }
 
     return render(request, 'products/product_detail.html', context)

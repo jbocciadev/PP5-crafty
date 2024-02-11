@@ -117,7 +117,50 @@
                             {% endwith %}
                         </div>
                     </form>
+                </div>                                
+            </div>
+            <div class="row">
+                <h3 class="d-10 offset-1">Here's what our customers have to say about this product:</h3>
+                <div class="col-12">
+                    <div class="reviews card-deck pb-3">
+                        {% for review in reviews %}
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">by: {{ review.user }}</h6>
+                            <p class="card-text">{{ review.review }}</p>
+                            <p class="mb-0 text-black review-score">                    
+                                {% for i in '12345' %}
+                                    {% if product.rating >= forloop.counter %}
+                                        <i class="fa-solid fa-star"></i>
+                                    {% else %}
+                                        {% if forloop.counter|diff:product.rating > 1 %}                                
+                                                <i class="fa-regular fa-star"></i>
+                                            {% else %}
+                                                {% if product.rating|modulo:1 != 0 %}
+                                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                                {% else %}        
+                                                <i class="fa-regular fa-star"></i>
+                                                {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
+                    <!-- <div class="review-card card">
+                    {% for review in reviews %}
+                        {{ review.user }}
+                        {{ review.rating }}
+                        {{ review.review }}
+                        
+                    {% endfor %}
+                    </div> -->
+                
             </div>
         </div>
 {% endblock %}
