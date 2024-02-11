@@ -34,7 +34,7 @@ class Product(models.Model):
         return str(self.name)
 
     def __init__(self, *args, **kwargs):
-        '''Overwriting the initialization method to calculate avg ratings 
+        '''Overwriting the initialization method to calculate avg ratings
         whenever product is called'''
 
         super().__init__(*args, **kwargs)

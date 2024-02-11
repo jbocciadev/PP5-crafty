@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category, Topic, Age_group
+from .models import Product, Category, Review
 from .forms import ProductForm
 
 
@@ -12,6 +12,10 @@ def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
+    # Append number of reviews in each product
+    for product in products:
+        product.num_reviews = Review.objects.filter(product=product).count()
+
     query = None
     categories = None
     age_group = None
@@ -28,7 +32,7 @@ def all_products(request):
 
             if sortkey == 'category':
                 sortkey = 'category__friendly_name'
-            
+
             if sortkey == 'age':
                 sortkey = 'age_group'
 
@@ -82,6 +86,9 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    # Append number of reviews to product
+    product.num_reviews = Review.objects.filter(product=product).count()
+    # https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
 
     context = {
         'product': product

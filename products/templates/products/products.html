@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load rating_tags %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -64,6 +65,24 @@
                                     </a>
                                     {% endif %}
                                     <div class="card-body pb-0">
+                                        <p class="mb-0 text-black ">                    
+                                            {% for i in '12345' %}
+                                                {% if product.rating >= forloop.counter %}
+                                                    <i class="fa-solid fa-star"></i>
+                                                {% else %}
+                                                    {% if forloop.counter|diff:product.rating > 1 %}                                
+                                                            <i class="fa-regular fa-star"></i>
+                                                        {% else %}
+                                                            {% if product.rating|modulo:1 != 0 %}
+                                                                <i class="fa-solid fa-star-half-stroke"></i>
+                                                            {% else %}        
+                                                            <i class="fa-regular fa-star"></i>
+                                                            {% endif %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            ({{ product.num_reviews }})
+                                        </p>
                                         <p class="mb-0">{{ product.name }}</p>
                                     </div>
                                     <div class="card-footer bg-white pt-0 border-0 text-left">
