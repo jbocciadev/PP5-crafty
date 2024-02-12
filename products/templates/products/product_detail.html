@@ -120,6 +120,7 @@
                 </div>                                
             </div>
             <div class="row">
+                {% if reviews %}
                 <h3 class="d-10 offset-1">Here's what our customers have to say about this product:</h3>
                 <div class="col-12">
                     <div class="reviews card-deck pb-3">
@@ -152,6 +153,7 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% endif %}
                     <!-- <div class="review-card card">
                     {% for review in reviews %}
                         {{ review.user }}

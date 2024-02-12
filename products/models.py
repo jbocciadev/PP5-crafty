@@ -33,13 +33,15 @@ class Product(models.Model):
     def __str__(self):
         return str(self.name)
 
-    def __init__(self, *args, **kwargs):
-        '''Overwriting the initialization method to calculate avg ratings
-        whenever product is called'''
+    def calculate_rating(self, *args, **kwargs):
+#     '''Calculating average rating (to be called
+#     whenever a new rating is added)'''
 
-        super().__init__(*args, **kwargs)
-        calculate_rating(self)
-# https://stackoverflow.com/questions/60481894/overwrite-django-model-init-method
+        reviews = Review.objects.filter(product=self)
+        self.rating = reviews.aggregate(Avg('rating'))['rating__avg']
+        self.save()
+# https://stackoverflow.com/questions/74116689/how-to-count-reviews-for-a-product-in-django
+        
 
 
 class Age_group(models.Model):
@@ -67,17 +69,9 @@ class Review(models.Model):
     def save(self, *args, **kwargs):
         '''Overriding save method to calculate avg rating
         every time a new review is added'''
-
-        calculate_rating(self.product)
         super(Review, self).save(*args, **kwargs)
+        self.product.calculate_rating(self.product)
+    
+        
 # https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
-
-
-def calculate_rating(self, *args, **kwargs):
-    '''Calculating average rating (to be called
-    whenever a new rating is added)'''
-
-    reviews = Review.objects.filter(product=self)
-    self.rating = reviews.aggregate(Avg('rating'))['rating__avg']
-    self.save()
-# https://stackoverflow.com/questions/74116689/how-to-count-reviews-for-a-product-in-django
+# https://stackoverflow.com/questions/60481894/overwrite-django-model-init-method
