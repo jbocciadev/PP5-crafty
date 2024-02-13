@@ -135,6 +135,11 @@ input[name='q']::placeholder {
     background-color: #fff; 
     color:#000;
 }
+
+.card-bg-grey {
+    background-color: #ddd;
+    min-height: 50%;
+}
 /* -------------------------------- bootstrap toasts */
 
 .message-container {

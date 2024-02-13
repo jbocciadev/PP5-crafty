@@ -123,12 +123,12 @@
                 {% if reviews %}
                 <h3 class="d-10 offset-1">Here's what our customers have to say about this product:</h3>
                 <div class="col-12">
-                    <div class="reviews card-deck pb-3">
+                    <div class="reviews card-deck pb-3 justify-content-center">
                         {% for review in reviews %}
-                        <div class="card" style="width: 18rem;">
+                        <div class="card pb-3" style="max-width: 25%;">
                             <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-muted">by: {{ review.user }}</h6>
-                            <p class="card-text">{{ review.review }}</p>
+                            <h5 class="card-subtitle mb-2 text-black">by: {{ review.user }}</h6>
+                            <p class="card-text card-bg-grey rounded px-3">{{ review.review }}</p>
                             <p class="mb-0 text-black review-score">                    
                                 {% for i in '12345' %}
                                     {% if product.rating >= forloop.counter %}
