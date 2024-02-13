@@ -5,6 +5,8 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category, Review
+from checkout.models import Order, OrderLineItem
+from profiles.models import UserProfile as Profile
 from .forms import ProductForm
 
 
@@ -90,10 +92,27 @@ def product_detail(request, product_id):
     product.num_reviews = Review.objects.filter(product=product).count()
     # https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
     reviews = Review.objects.filter(product=product)
+    
+    if request.user.is_authenticated:
+        user = request.user
+        profile = get_object_or_404(Profile, user=user)
+
+        # check if user has purchased product
+        has_purchased = OrderLineItem.objects.filter(order__in=user.user_profile.orders.all()).filter(product=product)
+        if has_purchased:
+            user.has_purchased = True
+            print(f"product {product} purchased by user {user}")
+        
+        # check if user has submitted a review
+        user_review = reviews.filter(user=request.user)
+        if user_review:
+            user.review = user_review
+            print("user review found")
 
     context = {
         'product': product,
         'reviews': reviews,
+        'user': user,
     }
 
     return render(request, 'products/product_detail.html', context)

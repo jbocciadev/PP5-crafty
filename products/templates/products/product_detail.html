@@ -117,6 +117,15 @@
                             {% endwith %}
                         </div>
                     </form>
+                    {{user}}
+                    {% if user.has_purchased %}
+                            You have purchased
+                        {% if user.review %}
+                            You have reviewed
+                            {{ user.review }}
+                        {% endif %}
+                    {% endif %}
+
                 </div>                                
             </div>
             <div class="row">
