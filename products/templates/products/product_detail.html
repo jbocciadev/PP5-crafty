@@ -121,8 +121,7 @@
                         {% if not user.review %}
                             {{ user }}, you have purchased this item, but you haven't reviewed it yet. 
                             <br>
-                            <button class="btn btn-success shadow" data-toggle="modal" data-target="#submitReviewModal">Submit my review!</button>
-                            
+                            <button class="btn btn-success shadow" data-toggle="modal" data-target="#submitReviewModal">Submit my review!</button>                            
                         {% endif %}
                     {% endif %}
 
@@ -185,59 +184,69 @@
                     </div>
                 </div>
                 {% endif %}
-                <div class="modal fade" id="submitReviewModal" tabindex="-1" role="dialog" aria-labelledby="submitReviewModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="submitReviewModalLabel">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <form action="#">
-                            <fieldset class="form-group form-check form-check-inline d-flex justify-content-around align-items-center">
-                                <input type="radio" name="rating" id="star-1" class="form-check-input">
-                                <label for="star-1" class="radio-star-label m-0 pb-0">
-                                    <i class="fa-solid fa-star"></i>
-                                </label>
-                                <input type="radio" name="rating" id="star-2">
-                                <label for="star-2" class="radio-star-label m-0">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </label>
-                                <input type="radio" name="rating" id="star-3">
-                                <label for="star-3" class="radio-star-label m-0">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </label>
-                                <input type="radio" name="rating" id="star-4">
-                                <label for="star-4" class="radio-star-label m-0">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </label>
-                                <input type="radio" name="rating" id="star-5">
-                                <label for="star-5" class="radio-star-label m-0">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </label>
 
-                            </fieldset>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                </div>
+                {% if user.has_purchased %}
+                        {% if not user.review %}
+                            <div class="modal fade" id="submitReviewModal" tabindex="-1" role="dialog" aria-labelledby="submitReviewModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <!-- <h5 class="modal-title" id="submitReviewModalLabel">Modal title</h5> -->
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">                                        
+                                    <form action="#">
+                                        <span>Rating:</span>
+                                        <fieldset class="form-group form-check form-check-inline d-flex justify-content-around align-items-center">
+                                            <input type="radio" name="rating" id="star-1" class="form-check-input">
+                                            <label for="star-1" class="radio-star-label m-0 pb-0">
+                                                <i class="fa-solid fa-star"></i>
+                                            </label>
+                                            <input type="radio" name="rating" id="star-2">
+                                            <label for="star-2" class="radio-star-label m-0">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </label>
+                                            <input type="radio" name="rating" id="star-3">
+                                            <label for="star-3" class="radio-star-label m-0">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </label>
+                                            <input type="radio" name="rating" id="star-4">
+                                            <label for="star-4" class="radio-star-label m-0">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </label>
+                                            <input type="radio" name="rating" id="star-5">
+                                            <label for="star-5" class="radio-star-label m-0">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </label>
+                                        </fieldset>
+                                        <fieldset>
+                                            <label for="review-text">Your review:</label>
+                                            <textarea name="" id="review-text" cols="30" rows="3" class="form-control"></textarea>
+                                        </fieldset>
+                                    </form>
+                                    </div>
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
+                                        <button type="button" class="btn btn-success">Submit my review</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
             </div>
         </div>
         

@@ -379,7 +379,6 @@ input[name='q']::placeholder {
     
 }
 
-
 /* Rating buttons sizing for smaller screen sizes */
 @media(max-width:425px) {
 
