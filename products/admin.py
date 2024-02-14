@@ -19,6 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'user',
         'product',
         'rating',

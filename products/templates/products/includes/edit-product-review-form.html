@@ -1,0 +1,60 @@
+<div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">                                        
+        <form method="POST" action="{% url 'edit_review' review.id %}" id="edit-review-form">
+            {% csrf_token %}
+            <span>Rating:</span>
+            <fieldset class="form-group form-check form-check-inline d-flex justify-content-around align-items-center">
+                <input type="radio" name="rating" id="star-1" class="form-check-input" value="1" {% if review_form.rating.value == 1 %} checked {% endif %}>
+                <label for="star-1" class="radio-star-label m-0 pb-0">
+                    <i class="fa-solid fa-star"></i>
+                </label>
+                <input type="radio" name="rating" id="star-2" value="2" {% if review_form.rating.value == 2 %} checked {% endif %}>
+                <label for="star-2" class="radio-star-label m-0">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </label>
+                <input type="radio" name="rating" id="star-3" value="3" {% if review_form.rating.value == 3 %} checked {% endif %}>
+                <label for="star-3" class="radio-star-label m-0">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </label>
+                <input type="radio" name="rating" id="star-4" value="4" {% if review_form.rating.value == 4 %} checked {% endif %}>
+                <label for="star-4" class="radio-star-label m-0">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </label>
+                <input type="radio" name="rating" id="star-5" value="5" {% if review_form.rating.value == 5 %} checked {% endif %}>
+                <label for="star-5" class="radio-star-label m-0">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </label>
+            </fieldset>
+            <fieldset>
+                <label for="review">Your review:</label>
+                <textarea name="review" id="id_review" cols="40" rows="10" class="form-control">{{review_form.review.value}}</textarea>
+            </fieldset>
+            <br>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
+            <button type="submit" class="btn btn-success">Submit my review</button>
+        </form>
+        </div>
+        
+        <div class="modal-footer">
+            
+        </div>
+    </div>
+    </div>
+</div>

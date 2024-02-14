@@ -144,6 +144,10 @@ input[name='q']::placeholder {
 .review-card-btn:hover {
     text-decoration: none;
 }
+
+form .fa-star.fa-solid {
+    color: #ffbf00;
+}
 /* -------------------------------- bootstrap toasts */
 
 .message-container {

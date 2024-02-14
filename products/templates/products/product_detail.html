@@ -133,7 +133,7 @@
                 <div class="col-12">
                     <div class="reviews card-deck pb-3 justify-content-center">
                         {% for review in reviews %}
-                        <div class="card pb-3 review-card">
+                        <div class="card pb-4 review-card">
                             <div class="card-body mb-2">
                             <h5 class="card-subtitle mb-2 text-black">by: {{ review.user }}</h6>
                                 <p class=" text-black review-score">                    
@@ -157,7 +157,8 @@
                             
                             {% if review == user.review %}
                             <a href="#" class="button btn-primary p-1 rounded review-card-btn" role="button" data-toggle="modal" data-target="#editReviewModal">Edit my review</a>
-                            <div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+                            {% include 'products/includes/edit-product-review-form.html' %}
+                            <!-- <div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="editReviewModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -175,7 +176,7 @@
                                     </div>
                                   </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <a href="#" class="button btn-danger p-1 rounded review-card-btn" role="button">Delete my review</a>
                             {% endif %}
                             </div>

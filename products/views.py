@@ -105,11 +105,14 @@ def product_detail(request, product_id):
         # check if user has submitted a review
         try:
             user_review = reviews.get(user=request.user)
+            print("user has reviewed")
         except Review.DoesNotExist:
             user_review = False
 
         if user_review:
             review_form = ProductReviewForm(instance=user_review)
+            print(user_review)
+            print(f"rev form {review_form}")
             user.review = user_review
         else:
             review_form = ProductReviewForm()
@@ -195,19 +198,47 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 @login_required
-def submit_review(request,product_id):
+def submit_review(request, product_id):
     """ Submit a review for the product """
     if request.method == 'POST':
-        form = ProductReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            user = request.user
-            product = get_object_or_404(Product, pk=product_id)
-            review.product_id = product_id
-            review.user = user
-            form.save()
-            messages.success(request, 'Review submitted, thank you!')
-        else:
-            messages.error(request, 'It seems there was an error while submitting your review. Please try again later.')
+        user = request.user
+        product = get_object_or_404(Product, pk=product_id)
+        # check if user has purchased product
+        has_purchased = OrderLineItem.objects.filter(order__in=user.user_profile.orders.all()).filter(product=product)
+        if has_purchased:
+            form = ProductReviewForm(request.POST)
+            if form.is_valid():
+                review = form.save(commit=False)            
+                review.product_id = product_id
+                review.user = user
+                form.save()
+                messages.success(request, 'Review submitted, thank you!')
+            else:
+                messages.error(request, 'It seems there was an error while submitting your review. Please try again later.')
+        else: messages.error(request, 'You can only submit reviews for products you have already purchased!')
 
     return redirect(reverse('product_detail', args=[product_id]))
+
+@login_required
+def edit_review(request, review_id):
+
+    if request.method == 'POST':
+        review = get_object_or_404(Review, pk=review_id)
+        user = request.user
+        product = review.product
+        if review.user == user:
+            form = ProductReviewForm(request.POST, instance=review)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Review amended, thank you!')
+        else:
+            messages.error(request, 'It seems You are not allowed to do that! You can only edit reviews you have submitted yourself.')
+            
+    return redirect(reverse('product_detail', args=[product.id]))
+
+# https://stackoverflow.com/questions/53801805/can-we-use-modelform-to-update-an-existing-instance-of-a-model
+
+@login_required
+def delete_review(request, review_id):
+    pass
+
