@@ -117,12 +117,30 @@
                             {% endwith %}
                         </div>
                     </form>
-                    {{user}}
                     {% if user.has_purchased %}
-                            You have purchased
-                        {% if user.review %}
-                            You have reviewed
-                            {{ user.review }}
+                        {% if not user.review %}
+                            {{ user }}, you have purchased this item, but you haven't reviewed it yet. 
+                            <br>
+                            <button class="btn btn-success shadow" data-toggle="modal" data-target="#submitReviewModal">Submit my review!</button>
+                            <div class="modal fade" id="submitReviewModal" tabindex="-1" role="dialog" aria-labelledby="submitReviewModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="submitReviewModalLabel">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      ...
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                         {% endif %}
                     {% endif %}
 
@@ -134,46 +152,61 @@
                 <div class="col-12">
                     <div class="reviews card-deck pb-3 justify-content-center">
                         {% for review in reviews %}
-                        <div class="card pb-3" style="max-width: 25%;">
-                            <div class="card-body">
+                        <div class="card pb-3 review-card">
+                            <div class="card-body mb-2">
                             <h5 class="card-subtitle mb-2 text-black">by: {{ review.user }}</h6>
-                            <p class="card-text card-bg-grey rounded px-3">{{ review.review }}</p>
-                            <p class="mb-0 text-black review-score">                    
-                                {% for i in '12345' %}
-                                    {% if product.rating >= forloop.counter %}
-                                        <i class="fa-solid fa-star"></i>
-                                    {% else %}
-                                        {% if forloop.counter|diff:product.rating > 1 %}                                
-                                                <i class="fa-regular fa-star"></i>
-                                            {% else %}
-                                                {% if product.rating|modulo:1 != 0 %}
-                                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                                {% else %}        
-                                                <i class="fa-regular fa-star"></i>
-                                                {% endif %}
+                                <p class=" text-black review-score">                    
+                                    {% for i in '12345' %}
+                                        {% if review.rating >= forloop.counter %}
+                                            <i class="fa-solid fa-star"></i>
+                                        {% else %}
+                                            {% if forloop.counter|diff:review.rating > 1 %}                                
+                                                    <i class="fa-regular fa-star"></i>
+                                                {% else %}
+                                                    {% if review.rating|modulo:1 != 0 %}
+                                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                                    {% else %}        
+                                                    <i class="fa-regular fa-star"></i>
+                                                    {% endif %}
+                                            {% endif %}
                                         {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                            </p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                                    {% endfor %}
+                                </p>
+                            <p class="card-text card-bg-grey rounded px-3">{{ review.review }}</p>
+                            
+                            {% if review == user.review %}
+                            <a href="#" class="button btn-primary p-1 rounded review-card-btn" role="button" data-toggle="modal" data-target="#editReviewModal">Edit my review</a>
+                            <div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="editReviewModalLabel">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      ...
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <a href="#" class="button btn-danger p-1 rounded review-card-btn" role="button">Delete my review</a>
+                            {% endif %}
                             </div>
                         </div>
                         {% endfor %}
                     </div>
                 </div>
                 {% endif %}
-                    <!-- <div class="review-card card">
-                    {% for review in reviews %}
-                        {{ review.user }}
-                        {{ review.rating }}
-                        {{ review.review }}
-                        
-                    {% endfor %}
-                    </div> -->
                 
             </div>
         </div>
+        
 {% endblock %}
 
 

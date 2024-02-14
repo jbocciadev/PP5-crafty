@@ -101,13 +101,15 @@ def product_detail(request, product_id):
         has_purchased = OrderLineItem.objects.filter(order__in=user.user_profile.orders.all()).filter(product=product)
         if has_purchased:
             user.has_purchased = True
-            print(f"product {product} purchased by user {user}")
         
         # check if user has submitted a review
-        user_review = reviews.filter(user=request.user)
+        try:
+            user_review = reviews.get(user=request.user)
+        except Review.DoesNotExist:
+            user_review = False
+
         if user_review:
             user.review = user_review
-            print("user review found")
 
     context = {
         'product': product,
