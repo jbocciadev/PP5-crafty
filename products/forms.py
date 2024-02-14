@@ -24,10 +24,14 @@ class ProductReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        # fields = '__all__'
-        fields = ('rating', 'review')
+        fields = '__all__'
+        # fields = ('rating', 'review')
 
-        widgets = {
-            'rating': forms.RadioSelect,
-        }
+        # widgets = {
+        #     'rating': forms.RadioSelect,
+        # }
+
+        # def __init__(self, *args, **kwargs):
+        #     super().__init__(*args, **kwargs)
+        #     self.fields['rating'].widget.attrs.update({'class': 'rating-radio'})
              

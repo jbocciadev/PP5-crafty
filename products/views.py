@@ -109,16 +109,16 @@ def product_detail(request, product_id):
             user_review = False
 
         if user_review:
-            review_form = ProductReviewForm(instance=user_review)
+            # review_form = ProductReviewForm(instance=user_review)
             user.review = user_review
-        else:
-            review_form = ProductReviewForm(instance=product)
+        # else:
+        #     review_form = ProductReviewForm(instance=product)
 
     context = {
         'product': product,
         'reviews': reviews,
         'user': user,
-        'review_form': review_form,
+        # 'review_form': review_form,
     }
 
     return render(request, 'products/product_detail.html', context)

@@ -244,6 +244,14 @@ input[name='q']::placeholder {
     font-size: .9rem;
 }
 
+.id_rating {
+    display: inline-flex;
+    list-style: none;
+}
+
+.radio-star-label {
+    font-size: .7em;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -371,8 +379,23 @@ input[name='q']::placeholder {
     
 }
 
+
+/* Rating buttons sizing for smaller screen sizes */
+@media(max-width:425px) {
+
+    .radio-star-label {
+        font-size: .55em;
+    }
+}
+@media(max-width:360px) {
+
+    .radio-star-label {
+        font-size: .4em;
+    }
+}
+
 /* Limit card width in larger screen sizes */
-@media(min-width:1200px){
+@media(min-width:1200px) {
     .review-card {
         max-width: 25%;
     }
