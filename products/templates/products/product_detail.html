@@ -132,7 +132,7 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      ...
+                                      {{ review_form }}
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -158,7 +158,8 @@
                                 <p class=" text-black review-score">                    
                                     {% for i in '12345' %}
                                         {% if review.rating >= forloop.counter %}
-                                            <i class="fa-solid fa-star"></i>
+                                            <!-- <i class="fa-solid fa-star"></i> -->
+                                            <i class="fas fas-star amber-text"></i>
                                         {% else %}
                                             {% if forloop.counter|diff:review.rating > 1 %}                                
                                                     <i class="fa-regular fa-star"></i>
@@ -180,13 +181,13 @@
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="editReviewModalLabel">Modal title</h5>
+                                      <h5 class="modal-title" id="editReviewModalLabel">Edit my review</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      ...
+                                      {{ review_form|crispy }}
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

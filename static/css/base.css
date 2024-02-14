@@ -371,7 +371,7 @@ input[name='q']::placeholder {
     
 }
 
-
+/* Limit card width in larger screen sizes */
 @media(min-width:1200px){
     .review-card {
         max-width: 25%;

@@ -7,7 +7,7 @@ from django.db.models.functions import Lower
 from .models import Product, Category, Review
 from checkout.models import Order, OrderLineItem
 from profiles.models import UserProfile as Profile
-from .forms import ProductForm
+from .forms import ProductForm, ProductReviewForm
 
 
 def all_products(request):
@@ -109,12 +109,16 @@ def product_detail(request, product_id):
             user_review = False
 
         if user_review:
+            review_form = ProductReviewForm(instance=user_review)
             user.review = user_review
+        else:
+            review_form = ProductReviewForm(instance=product)
 
     context = {
         'product': product,
         'reviews': reviews,
         'user': user,
+        'review_form': review_form,
     }
 
     return render(request, 'products/product_detail.html', context)
