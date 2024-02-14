@@ -109,16 +109,16 @@ def product_detail(request, product_id):
             user_review = False
 
         if user_review:
-            # review_form = ProductReviewForm(instance=user_review)
+            review_form = ProductReviewForm(instance=user_review)
             user.review = user_review
-        # else:
-        #     review_form = ProductReviewForm(instance=product)
+        else:
+            review_form = ProductReviewForm()
 
     context = {
         'product': product,
         'reviews': reviews,
         'user': user,
-        # 'review_form': review_form,
+        'review_form': review_form,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -193,3 +193,21 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+@login_required
+def submit_review(request,product_id):
+    """ Submit a review for the product """
+    if request.method == 'POST':
+        form = ProductReviewForm(request.POST)
+        if form.is_valid:
+            review = form.save(commit=False)
+            user = request.user
+            product = get_object_or_404(Product, pk=product_id)
+            review.product_id = product_id
+            review.user = user
+            form.save()
+            messages.success(request, 'Review submitted, thank you!')
+        else:
+            messages.error(request, 'It seems there was an error while submitting your review. Please try again later.')
+
+    return redirect(reverse('product_detail', args=[product_id]))
