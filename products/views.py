@@ -199,7 +199,7 @@ def submit_review(request,product_id):
     """ Submit a review for the product """
     if request.method == 'POST':
         form = ProductReviewForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             review = form.save(commit=False)
             user = request.user
             product = get_object_or_404(Product, pk=product_id)
