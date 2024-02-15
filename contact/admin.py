@@ -6,8 +6,9 @@ class ContactAdmin(admin.ModelAdmin):
         'case_id',
         'date_submitted',
         'user',
-        'subject'
-        'contact_text'
+        'subject',
+        'contact_text',
     )
+
 
 admin.site.register(Contact, ContactAdmin)
