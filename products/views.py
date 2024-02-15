@@ -98,21 +98,18 @@ def product_detail(request, product_id):
         profile = get_object_or_404(Profile, user=user)
 
         # check if user has purchased product
-        has_purchased = OrderLineItem.objects.filter(order__in=user.user_profile.orders.all()).filter(product=product)
+        has_purchased = OrderLineItem.objects.filter(order__in=profile.orders.all()).filter(product=product)
         if has_purchased:
             user.has_purchased = True
         
         # check if user has submitted a review
         try:
             user_review = reviews.get(user=request.user)
-            print("user has reviewed")
         except Review.DoesNotExist:
             user_review = False
 
         if user_review:
             review_form = ProductReviewForm(instance=user_review)
-            print(user_review)
-            print(f"rev form {review_form}")
             user.review = user_review
         else:
             review_form = ProductReviewForm()
@@ -202,9 +199,10 @@ def submit_review(request, product_id):
     """ Submit a review for the product """
     if request.method == 'POST':
         user = request.user
+        profile = get_object_or_404(Profile, user=user)
         product = get_object_or_404(Product, pk=product_id)
         # check if user has purchased product
-        has_purchased = OrderLineItem.objects.filter(order__in=user.user_profile.orders.all()).filter(product=product)
+        has_purchased = OrderLineItem.objects.filter(order__in=profile.orders.all()).filter(product=product)
         if has_purchased:
             form = ProductReviewForm(request.POST)
             if form.is_valid():
