@@ -62,9 +62,9 @@ def all_products(request):
                 compound_q &= Q(category__name__iexact=categories[0])
             else:
                 compound_q &= Q(category__name__in=categories)
-            
+
             categories = Category.objects.filter(name__in=categories)
-        
+
         if 'age_group' in request.GET:
             age_group = request.GET['age_group']
             compound_q &= Q(age_group__name__iexact=age_group)
@@ -240,5 +240,13 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
-    pass
-
+    review = get_object_or_404(Review, pk=review_id)
+    if request.user == review.user:
+        product = review.product
+        review.delete()
+        product.calculate_rating()
+        messages.success(request, 'Your review has been successfully removed!')
+        return redirect(reverse('product_detail', args=[product.id]))
+    else:
+        messages.error(request, 'It seems you are not allowed to do that!')
+        return redirect(reverse('products'))

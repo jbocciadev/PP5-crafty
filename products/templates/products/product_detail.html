@@ -177,7 +177,7 @@
                                   </div>
                                 </div>
                             </div> -->
-                            <a href="#" class="button btn-danger p-1 rounded review-card-btn" role="button">Delete my review</a>
+                            <a href="{% url 'delete_review' review.id %}" class="button btn-danger p-1 rounded review-card-btn" role="button">Delete my review</a>
                             {% endif %}
                             </div>
                         </div>
