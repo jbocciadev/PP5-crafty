@@ -4,6 +4,8 @@ from django.contrib import messages
 from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
+from contact.models import Contact
+from contact.forms import ContactForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -14,25 +16,31 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     userdetails = get_object_or_404(User, id=request.user.id)
-    print(userdetails)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
-        else: messages.error(request, "Update failed. Please ensure all fields on the form are valid.")
+        else:
+            messages.error(request,
+                           "Update failed. Please ensure all fields on the form are valid.")
     else:
         form = UserProfileForm(instance=profile)
 
     orders = profile.orders.all()
+
+    contacts = Contact.objects.filter(user=request.user)
+    contact_form = ContactForm()
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
         'on_profile_page': True,
-        'user': userdetails
+        'user': userdetails,
+        'contacts': contacts,
+        'contact_form': contact_form,
     }
 
     return render(request, template, context)

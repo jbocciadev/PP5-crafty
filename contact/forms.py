@@ -5,4 +5,7 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = '__all__'
+        fields = (
+            'subject',
+            'contact_text',
+        )
