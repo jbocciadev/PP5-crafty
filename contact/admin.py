@@ -9,6 +9,13 @@ class ContactAdmin(admin.ModelAdmin):
         'subject',
         'contact_text',
     )
+    search_fields = (
+        'user',
+        'case_id',
+    )
 
 
 admin.site.register(Contact, ContactAdmin)
+
+
+# https://earthly.dev/blog/customize-django-admin-site/

@@ -122,4 +122,7 @@ Leonardo.ai  AI Image generation
 
 https://stackoverflow.com/questions/54454051/dynamic-query-django-build and https://forum.djangoproject.com/t/fielderror-related-field-got-invalid-lookup-iexact/16119/2 for building dynamic queries based on multiple criteria
 
+# https://earthly.dev/blog/customize-django-admin-site/ 
+# https://docs.djangoproject.com/en/dev/ref/models/fields/#uuidfield
+
 
