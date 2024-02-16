@@ -8,15 +8,15 @@
         </button>
         </div>
         <div class="modal-body">                                        
-        <form method="POST" action="#" id="submit-review-form">
+        <form method="POST" action="{% url 'submit_contact' %}" id="submit-review-form">
             {% csrf_token %}
             <span>Subject:</span>
             <fieldset class="form-group form-check form-check-inline d-flex justify-content-around align-items-center">
                 <input type="text" class="form-control" name="subject">
             </fieldset>
             <fieldset>
-                <label for="message">Your message:</label>
-                <textarea name="message" id="id_review" cols="40" rows="10" class="form-control"></textarea>
+                <label for="contact_text">Your message:</label>
+                <textarea name="contact_text" id="id_review" cols="40" rows="10" class="form-control"></textarea>
             </fieldset>
             <br>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
