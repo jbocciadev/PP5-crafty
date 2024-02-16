@@ -31,8 +31,8 @@ body {
 .logo-name {
     font-size: 3rem;
     padding: 1rem;
-    color: #073E90;
-    border: 2px solid #073E90;
+    color: #073B90;
+    border: 2px solid #073B90;
     border-radius: 50%;
 }
 .main-logo-link {
@@ -52,6 +52,33 @@ body {
 
 .bg-green {
     background: #06d6a0;
+}
+
+#search-box {
+    border-top-left-radius: 10rem !important;
+    border-bottom-left-radius: 10rem !important;
+    border-color: #073B90 !important;
+}
+#search-btn {
+    border-top-right-radius: 10rem !important;
+    border-bottom-right-radius: 10rem !important;
+    background: #073B90 !important;
+    border-color: #073B90 !important;
+}
+
+#bag-red {
+    color:#ef476f !important;
+}
+
+#bag-crafty-blue {
+    color: #073B90 !important;
+}
+
+.text-crafty-blue {
+    color: #073B90 !important;
+}
+#user-crafty-blue {
+    color: #073B90 !important;
 }
 
 .btn-outline-black {
