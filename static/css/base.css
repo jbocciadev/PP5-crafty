@@ -80,6 +80,9 @@ body {
 #user-crafty-blue {
     color: #073B90 !important;
 }
+#user-text-crafty-blue {
+    color: #073B90 !important;
+}
 
 .btn-outline-black {
     background: white;
@@ -144,6 +147,19 @@ a.category-badge > span.badge:hover {
 .update-link,
 .remove-item {
     cursor: pointer;
+}
+
+.btt-link:hover {
+    text-decoration: none;
+}
+
+#btt-btn {
+    border: solid 1px #073B90;
+    border-radius: 50% !important;
+}
+
+#btt-fa {
+    color:#073B90 !important;
 }
 
 .bg-black {
