@@ -30,7 +30,7 @@ def profile(request):
 
     orders = profile.orders.all()
 
-    contacts = Contact.objects.filter(user=request.user)
+    contacts = Contact.objects.filter(user=request.user).order_by('-date_submitted')
     contact_form = ContactForm()
 
     template = 'profiles/profile.html'
