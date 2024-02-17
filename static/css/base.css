@@ -2,7 +2,7 @@ html {
     height: 100%;
 }
 
-header {
+header, footer {
     background-color: #ffd166;
 }
 
@@ -26,12 +26,11 @@ body {
 }
 
 .logo-font {
-    /* text-transform: uppercase; */
+    color: #073B90;
 }
 .logo-name {
     font-size: 3rem;
     padding: 1rem;
-    color: #073B90;
     border: 2px solid #073B90;
     border-radius: 50%;
 }
@@ -302,6 +301,11 @@ form .fa-star.fa-solid {
 
 .block-text {
     font-family: 'Dosis', sans-serif;
+}
+
+.fa-brands {
+    color: #073B90;
+    font-size: 2rem;
 }
 
 /* -------------------------------- Media Queries */
