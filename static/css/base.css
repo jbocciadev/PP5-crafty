@@ -16,6 +16,11 @@ body {
     font-size: 1.2rem;
 }
 
+.content-wrapper {
+    position:relative;
+    min-height: calc(100vh - 185px);
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -303,11 +308,25 @@ form .fa-star.fa-solid {
     font-family: 'Dosis', sans-serif;
 }
 
+footer {
+    bottom: 0;
+    z-index: 9;
+}
+
 .fa-brands {
-    color: #073B90;
+    color: #073B90 !important;
     font-size: 2rem;
 }
 
+.footer-link > a {
+    text-decoration: underline;
+    color: #073B90 !important;
+
+}
+
+footer a:hover, footer i:hover {
+    color: #dc3545 !important;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
