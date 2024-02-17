@@ -21,6 +21,14 @@ body {
     min-height: calc(100vh - 185px);
 }
 
+.banner {
+    top: 10vh;
+}
+
+.profile {
+    min-height: calc(100vh - 225px);
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
