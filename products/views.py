@@ -92,7 +92,11 @@ def product_detail(request, product_id):
     product.num_reviews = Review.objects.filter(product=product).count()
     # https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
     reviews = Review.objects.filter(product=product)
-    
+
+    user = None
+    review_form = None
+    reviews = None
+
     if request.user.is_authenticated:
         user = request.user
         profile = get_object_or_404(Profile, user=user)
@@ -101,7 +105,7 @@ def product_detail(request, product_id):
         has_purchased = OrderLineItem.objects.filter(order__in=profile.orders.all()).filter(product=product)
         if has_purchased:
             user.has_purchased = True
-        
+
         # check if user has submitted a review
         try:
             user_review = reviews.get(user=request.user)
@@ -116,10 +120,15 @@ def product_detail(request, product_id):
 
     context = {
         'product': product,
-        'reviews': reviews,
-        'user': user,
-        'review_form': review_form,
     }
+
+    if user:
+        context.user = user
+    if reviews:
+        context.reviews = reviews
+    if review_form:
+        context.review_form = review_form
+
 
     return render(request, 'products/product_detail.html', context)
 
