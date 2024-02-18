@@ -95,7 +95,6 @@ def product_detail(request, product_id):
 
     user = None
     review_form = None
-    reviews = None
 
     if request.user.is_authenticated:
         user = request.user
@@ -105,29 +104,28 @@ def product_detail(request, product_id):
         has_purchased = OrderLineItem.objects.filter(order__in=profile.orders.all()).filter(product=product)
         if has_purchased:
             user.has_purchased = True
-
-        # check if user has submitted a review
-        try:
-            user_review = reviews.get(user=request.user)
-        except Review.DoesNotExist:
-            user_review = False
-
-        if user_review:
-            review_form = ProductReviewForm(instance=user_review)
-            user.review = user_review
-        else:
-            review_form = ProductReviewForm()
+            # check if user has submitted a review
+            try:
+                user_review = reviews.get(user=request.user)
+            except Review.DoesNotExist:
+                user_review = False
+            # If user had reviewed, pass it to modelform, else initialize blank modelform
+            if user_review:
+                review_form = ProductReviewForm(instance=user_review)
+                user.review = user_review
+            else:
+                review_form = ProductReviewForm()
 
     context = {
         'product': product,
     }
 
     if user:
-        context.user = user
+        context['user'] = user
     if reviews:
-        context.reviews = reviews
+        context['reviews'] = reviews
     if review_form:
-        context.review_form = review_form
+        context['review_form'] = review_form
 
 
     return render(request, 'products/product_detail.html', context)
