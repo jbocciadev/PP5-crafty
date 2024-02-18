@@ -1,0 +1,21 @@
+<div class="modal fade" id="subscriberModal" tabindex="-1" aria-labelledby="subscriberModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="subscriberModal">Subscribe to our Newsletter</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="block-text">Please, provide us with your email address below to sign you up now!</p>
+          <form action="{% url 'subscribe' %} " method="post">
+            <input type="email" name="email" id="subscriberEmail" placeholder="your@email.here" class="w-100">
+            <hr>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

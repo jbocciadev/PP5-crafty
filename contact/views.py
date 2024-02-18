@@ -6,8 +6,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-from .models import Contact
-from .forms import ContactForm
+from .models import Contact, Subscriber
+from .forms import ContactForm, SubscriberForm
 
 
 @login_required
@@ -38,3 +38,20 @@ def submit_contact(request):
             )
 
     return redirect(reverse('profile'))
+
+
+def subscribe(request):
+    next = request.POST.get('next', '/')
+
+    if request.method == 'POST':
+        email = request.POST.get('email',).lower()
+        form = SubscriberForm(email)
+        if form.is_valid():
+            form.save
+            messages.info(request, """ Subscribed successfully!\n 
+                          A confirmation email has been sent to {email}. """)
+
+    return (next)
+
+
+# https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request

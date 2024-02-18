@@ -13,3 +13,8 @@ class Contact(models.Model):
     date_submitted = models.DateTimeField(auto_now_add=True, blank=False, null=False)
 
 # https://docs.djangoproject.com/en/dev/ref/models/fields/#uuidfield
+
+
+class Subscriber(models.Model):
+    subscriber_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    email = models.EmailField(blank=False, null=False, unique=True)
