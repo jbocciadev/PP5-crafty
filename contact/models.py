@@ -1,3 +1,4 @@
+from typing import Any
 import uuid
 
 from django.db import models
@@ -18,3 +19,8 @@ class Contact(models.Model):
 class Subscriber(models.Model):
     subscriber_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(blank=False, null=False, unique=True)
+
+    def save(self, *args, **kwargs):
+        """ Override save method to convert email to lowercase """
+        self.email = self.email.lower()
+        super(Subscriber, self).save(*args, **kwargs)

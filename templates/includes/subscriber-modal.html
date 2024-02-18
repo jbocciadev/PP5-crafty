@@ -10,10 +10,12 @@
         <div class="modal-body">
           <p class="block-text">Please, provide us with your email address below to sign you up now!</p>
           <form action="{% url 'subscribe' %} " method="post">
+            {% csrf_token %}
             <input type="email" name="email" id="subscriberEmail" placeholder="your@email.here" class="w-100">
+            <input type="hidden" name="next" value="{{ request.path }}">
             <hr>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
           </form>
         </div>
       </div>

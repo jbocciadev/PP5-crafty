@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import QueryDict, HttpResponseRedirect
 
 
 from .models import Contact, Subscriber
@@ -41,17 +42,40 @@ def submit_contact(request):
 
 
 def subscribe(request):
-    next = request.POST.get('next', '/')
+    # https://stackoverflow.com/questions/29492894/how-to-remove-key-from-request-querydict-in-django
+    # Cleaning-up the form to get rid of the next field and create new entry in subscribers table
+    query = QueryDict.copy(request.POST)
+    next = query.pop('next', '/')[0]
 
     if request.method == 'POST':
         email = request.POST.get('email',).lower()
-        form = SubscriberForm(email)
+        form = SubscriberForm(query)
         if form.is_valid():
-            form.save
-            messages.info(request, """ Subscribed successfully!\n 
-                          A confirmation email has been sent to {email}. """)
+            form.save()
+            uuid = Subscriber.objects.get(email=email).subscriber_id
 
-    return (next)
+            messages.success(request, f""" Subscribed successfully!\n
+                          A confirmation email has been sent to {email} """)
+
+            # Send confirmation email
+            user_email = [email]
+            email_subject = f""" Newsletter subscription confirmation for {email} """
+            email_body = f""" Hi there!\n
+             This is a confirmation email for {email}. 
+             You have subscribed to Crafty's newsletter.\n
+             If you wish to unsubscribe, please follow the url below:\n
+             https://pp5-crafty-015973d8fb4f.herokuapp.com/contact/unsubscribe/{uuid} \n
+             Regards,\n
+             The Crafty team """
+
+            send_mail(
+                email_subject,
+                email_body,
+                settings.DEFAULT_FROM_EMAIL,
+                user_email,
+            )
+
+    return HttpResponseRedirect(next)
 
 
 # https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
