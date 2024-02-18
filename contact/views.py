@@ -48,32 +48,35 @@ def subscribe(request):
     next = query.pop('next', '/')[0]
 
     if request.method == 'POST':
-        email = request.POST.get('email',).lower()
-        form = SubscriberForm(query)
-        if form.is_valid():
-            form.save()
-            uuid = Subscriber.objects.get(email=email).subscriber_id
+        email = request.POST.get('email').lower()
+        # Check if email is already subscribed.
+        if Subscriber.objects.filter(email=email).exists():
+            messages.error(request, f"It seems {email} is already subscribed to our Newsletter.")
+        else:
+            form = SubscriberForm(query)
+            if form.is_valid():
+                form.save()
+                uuid = Subscriber.objects.get(email=email).subscriber_id
+                messages.success(request, f""" Subscribed successfully!\n
+                            A confirmation email has been sent to {email} """)
 
-            messages.success(request, f""" Subscribed successfully!\n
-                          A confirmation email has been sent to {email} """)
+                # Send confirmation email
+                user_email = [email]
+                email_subject = f""" Newsletter subscription confirmation for {email} """
+                email_body = f""" Hi there!\n
+                This is a confirmation email for {email}. 
+                You have subscribed to Crafty's newsletter.\n
+                If you wish to unsubscribe, please follow the url below:\n
+                https://pp5-crafty-015973d8fb4f.herokuapp.com/contact/unsubscribe/?subscriber_id={uuid} \n
+                Regards,\n
+                The Crafty team """
 
-            # Send confirmation email
-            user_email = [email]
-            email_subject = f""" Newsletter subscription confirmation for {email} """
-            email_body = f""" Hi there!\n
-             This is a confirmation email for {email}. 
-             You have subscribed to Crafty's newsletter.\n
-             If you wish to unsubscribe, please follow the url below:\n
-             https://pp5-crafty-015973d8fb4f.herokuapp.com/contact/unsubscribe/{uuid} \n
-             Regards,\n
-             The Crafty team """
-
-            send_mail(
-                email_subject,
-                email_body,
-                settings.DEFAULT_FROM_EMAIL,
-                user_email,
-            )
+                send_mail(
+                    email_subject,
+                    email_body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    user_email,
+                )
 
     return HttpResponseRedirect(next)
 # https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
