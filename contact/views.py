@@ -76,6 +76,14 @@ def subscribe(request):
             )
 
     return HttpResponseRedirect(next)
-
-
 # https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
+
+
+def unsubscribe(request):
+    if request.method == 'GET':
+        subscriber_id = request.GET['subscriber_id']
+
+    context = {
+        'subscriber_id': subscriber_id,
+    }
+    return render(request, 'contact/unsubscribe.html', context)
