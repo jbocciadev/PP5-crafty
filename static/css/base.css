@@ -21,6 +21,10 @@ body {
     min-height: calc(100vh - 185px);
 }
 
+.error-content {
+    margin-top: 250px !important;
+}
+
 .banner {
     top: 10vh;
 }

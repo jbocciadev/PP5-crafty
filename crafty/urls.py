@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from .views import handler404, handler500
 
 
-# Uncomment lines 11, 12, and 22 to test server error 500 page. Navigate to
+# Uncomment lines 11, 12, and 23 to test server error 500 page. Navigate to
 # https://pp5-crafty-015973d8fb4f.herokuapp.com/500
 # def view_500(request):
 #     raise Exception("Test error 500")
