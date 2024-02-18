@@ -67,7 +67,7 @@ def subscribe(request):
                 This is a confirmation email for {email}. 
                 You have subscribed to Crafty's newsletter.\n
                 If you wish to unsubscribe, please follow the url below:\n
-                https://pp5-crafty-015973d8fb4f.herokuapp.com/contact/unsubscribe/?subscriber_id={uuid} \n
+                https://pp5-crafty-015973d8fb4f.herokuapp.com/contact/unsubscribe/{uuid}/ \n
                 Regards,\n
                 The Crafty team """
 
@@ -82,11 +82,24 @@ def subscribe(request):
 # https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
 
 
-def unsubscribe(request):
-    if request.method == 'GET':
-        subscriber_id = request.GET['subscriber_id']
-
-    context = {
-        'subscriber_id': subscriber_id,
-    }
+def unsubscribe(request, subscriber_id):
+    if request.method == 'POST':
+        email = request.POST.get('email').lower()
+        subscriber_id = request.POST.get('subscriber_id')
+        print(email)
+        print(subscriber_id)
+        # check that email and subscriber_id both match the record in the database
+        if Subscriber.objects.filter(email=email, subscriber_id=subscriber_id).exists():
+            Subscriber.objects.filter(email=email, subscriber_id=subscriber_id).delete()
+            messages.success(request, "You have successfully unsubscribed!")
+        else:
+            messages.error(request, f"There seems to be a problem with the details you have provided.")
+        return redirect(reverse('products'))
+    else:
+        context = {
+            'subscriber_id': subscriber_id,
+        }
     return render(request, 'contact/unsubscribe.html', context)
+
+def unsubscribe_blank(request):
+    return redirect(reverse('products'))
