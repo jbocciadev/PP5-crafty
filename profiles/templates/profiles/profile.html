@@ -18,7 +18,7 @@
 
     <div class="overlay"></div>
     <div class="container position-relative profile">
-        <div class="row trans-white">
+        <div class="row trans-white rounded-top">
             <div class="col">
                 <hr>
                 <h2 class="logo-font mb-4">My Profile</h2>
@@ -44,19 +44,19 @@
         </div>
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-details" role="tabpanel" aria-labelledby="pills-details-tab">
-                <div class="row trans-white">
+                <div class="row trans-white rounded-bottom">
                     <div class="col-12 col-lg-6 offset-lg-3 pb-3">
                         <p class="text-muted">Personal Details</p>
                         <hr>
-                        first name:{{ user.first_name }} <br>
-                        last name:{{ user.first_name }} <br>
-                        username:{{ user.username }} <br>
-                        email:{{ user.email }} <br>                        
+                        <span>username:{{ user.username }}</span><br>
+                        <span>email:{{ user.email }}</span><br>
+                        <span>registered since: {{ user.date_joined }}</span><br>
+                        <span>last visit: {{ user.last_login }}</span><br>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-addresses" role="tabpanel" aria-labelledby="pills-addresses-tab">
-                <div class="row trans-white">
+                <div class="row trans-white rounded-bottom">
                     <div class="col-12 col-lg-6 offset-lg-3 pb-3">
                         <p class="text-muted">My Delivery Information</p>
                         <hr>
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
-                <div class="row trans-white">
+                <div class="row trans-white rounded-bottom">
                     <div class="col-12">
                         <p class="text-muted offset-lg-3">My Order History</p>
                         <hr>
@@ -113,7 +113,7 @@
                 </div>
             </div>            
             <div class="tab-pane fade show" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <div class="row trans-white">
+                <div class="row trans-white rounded-bottom">
                     <div class="col-12 pb-3">
                         <p class="text-muted offset-lg-3">Contact</p>                        
                         <hr>
