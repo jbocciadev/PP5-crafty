@@ -1,9 +1,9 @@
-<footer class="d-block d-md-none my-3 position-relative">
+<footer class="d-none d-md-block my-3 position-relative">
     <div class="container-fluid">
         <div class="row py-3">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-10 offset-1">
+                    <div class="col-8 offset-2">
                         <div class="row">
                             <div class="col text-center py-2">
                                 <a href="#"><i class="fa-brands fa-square-pinterest"></i></a>
@@ -21,28 +21,26 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-10 offset-1">
                         <h2 class="logo-font my-0 text-center footer-logo mb-1"><strong>Crafty</strong></h2>
                         <p class="footer-link text-center"> <i class="fa-regular fa-copyright"></i> Created by <a class="" href="https://github.com/jbocciadev" target="_blank" rel="noopener"
                             aria-label="Visit my GitHub page (opens in a new tab)">jbocciadev</a> for <a
                             href="https://codeinstitute.net" target="_blank" rel="noopener"
                             aria-label="Visit Code Institute's site (opens in a new tab)">Code
                             Institute</a>, 2024.</p>
-
-                        <section class="d-flex flex-column justify-content-around mt-3">
-
-                            <div class="div footer-link pb-2">
+                        <section class="d-flex justify-content-around mt-3">
+                            <div class="div footer-link">
                                 <a href="#">Who we are and what we do</a>
                             </div>
-
-                            <div class="div footer-link pb-2">
-                                <a href="#">Terms & conditions</a>
+                            |
+                            <div class="div footer-link">
+                                <a href="#" data-toggle="modal" data-target="#policyModal">Privacy Policy</a>
                             </div>
-                            
-                            <div class="div footer-link pb-2">
+                            |
+                            <div class="div footer-link">
                                 <a href="{% url 'account_signup' %}">Register</a>
                             </div>
-                            
+                            |
                             <div class="div footer-link">
                                 <a href="#" data-toggle="modal" data-target="#subscriberModal">Sign up to our Newsletter</a>
                             </div>

@@ -145,14 +145,15 @@
     {% block content %}
     {% endblock %}
       
-      <!-- Subscriber Modal -->
-    {% include 'includes/subscriber-modal.html' %}
+      <!-- Modals -->
+    {% include 'includes/modals/subscriber-modal.html' %}
+    {% include 'includes/modals/privacy-policy-modal.html' %}
       
 
 </div>
     <!-- Footers -->
-    {% include 'includes/desktop-footer.html' %}
-    {% include 'includes/mobile-footer.html' %}
+    {% include 'includes/footers/desktop-footer.html' %}
+    {% include 'includes/footers/mobile-footer.html' %}
 
     {% block postloadjs %}
         <script type="text/javascript">

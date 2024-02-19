@@ -125,4 +125,4 @@ https://stackoverflow.com/questions/54454051/dynamic-query-django-build and http
 # https://earthly.dev/blog/customize-django-admin-site/ 
 # https://docs.djangoproject.com/en/dev/ref/models/fields/#uuidfield
 
-
+# https://www.termsfeed.com/privacy-policy-generator/
