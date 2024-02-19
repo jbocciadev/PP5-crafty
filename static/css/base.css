@@ -206,6 +206,10 @@ input[name='q']::placeholder {
     text-decoration: none;
 }
 
+.card-img-top {
+    border: 3px solid #073B90 !important;
+}
+
 form .fa-star.fa-solid {
     color: #ffbf00;
 }

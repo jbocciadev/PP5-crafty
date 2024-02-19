@@ -126,3 +126,5 @@ https://stackoverflow.com/questions/54454051/dynamic-query-django-build and http
 # https://docs.djangoproject.com/en/dev/ref/models/fields/#uuidfield
 
 # https://www.termsfeed.com/privacy-policy-generator/
+
+# https://www.semrush.com/goodcontent/ai-text-generator/
