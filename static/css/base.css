@@ -31,9 +31,10 @@ body {
 
 .profile {
     min-height: calc(100vh - 225px);
+}
+.profile, .product-wrapper {
     margin-top: 20px !important;
 }
-
 /* from Bulma */
 .icon {
     align-items: center;
@@ -469,7 +470,7 @@ footer a:hover, footer i:hover {
     .error-content {
         margin-top: 150px !important;        
     }
-    .profile {
+    .profile, .product-wrapper {
         margin-top: -40px !important;
     }
 }
