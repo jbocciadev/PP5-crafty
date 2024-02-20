@@ -336,14 +336,22 @@ footer {
     font-size: 2rem;
 }
 
+.footer-link > .bar {
+    color: #073B90 !important;
+}
+
 .footer-link > a {
     text-decoration: underline;
     color: #073B90 !important;
-
 }
 
 footer a:hover, footer i:hover {
     color: #dc3545 !important;
+}
+
+summary {
+    list-style: none;
+    font-style: italic;
 }
 /* -------------------------------- Media Queries */
 

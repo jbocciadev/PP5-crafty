@@ -129,3 +129,5 @@ https://stackoverflow.com/questions/54454051/dynamic-query-django-build and http
 
 # https://www.semrush.com/goodcontent/ai-text-generator/
 # https://favicon.io/favicon-generator/
+
+# https://www.smythstoys.com/
