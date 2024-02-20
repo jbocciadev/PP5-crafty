@@ -98,8 +98,8 @@
                                                 {% endif %}
                                                 {% if request.user.is_superuser %}
                                                 <small class="ml-3">
-                                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                    <a class="badge badge-primary px-3 font-weight-light" href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                                    <a class="badge badge-danger px-3 font-weight-light" href="{% url 'delete_product' product.id %}">Delete</a>
                                                 </small>
                                                 {% endif %}
                                             </div>
