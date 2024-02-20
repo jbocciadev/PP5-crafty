@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/accounts/login/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/bag/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?sort=price&amp;direction=asc</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?sort=age_group&amp;direction=asc</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?sort=category&amp;direction=asc</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?category=felt_books</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?category=playmats_and_gyms</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?category=activity_packs</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?category=bag_fillers&amp;age_group=babies</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?category=bag_fillers&amp;age_group=toddlers</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?category=bag_fillers&amp;age_group=children</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/accounts/login/?next=/profile/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/24/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/16/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/21/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/17/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/20/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/18/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/23/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/19/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/22/</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/products/?category=bag_fillers</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/accounts/signup/?next=%2Fprofile%2F</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://pp5-crafty-015973d8fb4f.herokuapp.com/accounts/login/?next=%2Fprofile%2F</loc>
+  <lastmod>2024-02-20T12:13:23+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

@@ -1,0 +1,5 @@
+User-agent:*
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: /admin/
+Sitemap: https://pp5-crafty-015973d8fb4f.herokuapp.com/sitemap.xml
