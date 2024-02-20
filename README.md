@@ -128,3 +128,4 @@ https://stackoverflow.com/questions/54454051/dynamic-query-django-build and http
 # https://www.termsfeed.com/privacy-policy-generator/
 
 # https://www.semrush.com/goodcontent/ai-text-generator/
+# https://favicon.io/favicon-generator/
