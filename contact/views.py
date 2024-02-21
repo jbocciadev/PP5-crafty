@@ -26,17 +26,20 @@ def submit_contact(request):
                              """Your query has been sent. 
                              You should receive a confirmation email
                              and our staff will be in contact soon.""")
+
             # Send confirmation email
-            recipients = [user.email, settings.DEFAULT_SUPPORT_EMAIL]
+            cust_email = user.email
             email_subject = f"Your contact request - {contact.subject}"
             email_body = f""" Below is a copy of your contact query: \n
-    {contact.contact_text}"""
-            
+    {contact.contact_text}
+    Regards,
+    The Crafty team"""
+
             send_mail(
                 email_subject,
                 email_body,
                 settings.DEFAULT_FROM_EMAIL,
-                recipients,
+                [cust_email, settings.DEFAULT_SUPPORT_EMAIL]
             )
 
     return redirect(reverse('profile'))
@@ -62,7 +65,7 @@ def subscribe(request):
                             A confirmation email has been sent to {email} """)
 
                 # Send confirmation email
-                recipients = [email, settings.DEFAULT_SUPPORT_EMAIL]
+                cust_email = email
                 email_subject = f""" Newsletter subscription confirmation for {email} """
                 email_body = f""" Hi there!\n
                 This is a confirmation email for {email}. 
@@ -76,14 +79,14 @@ def subscribe(request):
                     email_subject,
                     email_body,
                     settings.DEFAULT_FROM_EMAIL,
-                    user_email,
+                    [cust_email, settings.DEFAULT_SUPPORT_EMAIL]
                 )
 
     return HttpResponseRedirect(next)
-# https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
 
 
 def unsubscribe(request, subscriber_id):
+    # Handles Newsletter unsubscription for user. Validates uuid and email address match.
     if request.method == 'POST':
         email = request.POST.get('email').lower()
         subscriber_id = request.POST.get('subscriber_id')
@@ -94,7 +97,8 @@ def unsubscribe(request, subscriber_id):
             Subscriber.objects.filter(email=email, subscriber_id=subscriber_id).delete()
             messages.success(request, "You have successfully unsubscribed!")
         else:
-            messages.error(request, f"There seems to be a problem with the details you have provided.")
+            messages.error(request, """There seems to be a problem with
+                            the details you have provided.""")
         return redirect(reverse('products'))
     else:
         context = {
@@ -103,4 +107,5 @@ def unsubscribe(request, subscriber_id):
     return render(request, 'contact/unsubscribe.html', context)
 
 def unsubscribe_blank(request):
+    # Handles 500 error for url .../unsubscribe/ without arguments.
     return redirect(reverse('products'))

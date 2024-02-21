@@ -131,3 +131,5 @@ https://stackoverflow.com/questions/54454051/dynamic-query-django-build and http
 # https://favicon.io/favicon-generator/
 
 # https://www.smythstoys.com/
+
+# https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
