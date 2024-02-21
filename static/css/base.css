@@ -87,6 +87,8 @@ body {
 
 #bag-red,
 #bag-red-mobile {
+#bag-red,
+#bag-red-mobile {
     color:#ef476f !important;
 }
 
@@ -103,6 +105,7 @@ body {
 #bag-crafty-blue-mobile {
     color: #073B90 !important;
 }
+
 
 .btn-outline-black {
     background: white;
