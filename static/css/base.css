@@ -73,7 +73,7 @@ body {
     background: #06d6a0;
 }
 
-#search-box {
+#search-box, #search-box-mobile {
     border-top-left-radius: 10rem !important;
     border-bottom-left-radius: 10rem !important;
     border-color: #073B90 !important;
@@ -350,8 +350,7 @@ footer a:hover, footer i:hover {
     color: #dc3545 !important;
 }
 
-summary {
-    list-style: none;
+.source {
     font-style: italic;
 }
 /* -------------------------------- Media Queries */
