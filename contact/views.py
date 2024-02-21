@@ -27,15 +27,16 @@ def submit_contact(request):
                              You should receive a confirmation email
                              and our staff will be in contact soon.""")
             # Send confirmation email
-            user_email = [user.email]
+            recipients = [user.email, settings.DEFAULT_SUPPORT_EMAIL]
             email_subject = f"Your contact request - {contact.subject}"
             email_body = f""" Below is a copy of your contact query: \n
     {contact.contact_text}"""
+            
             send_mail(
                 email_subject,
                 email_body,
                 settings.DEFAULT_FROM_EMAIL,
-                user_email,
+                recipients,
             )
 
     return redirect(reverse('profile'))
@@ -61,7 +62,7 @@ def subscribe(request):
                             A confirmation email has been sent to {email} """)
 
                 # Send confirmation email
-                user_email = [email]
+                recipients = [email, settings.DEFAULT_SUPPORT_EMAIL]
                 email_subject = f""" Newsletter subscription confirmation for {email} """
                 email_body = f""" Hi there!\n
                 This is a confirmation email for {email}. 

@@ -31,7 +31,7 @@ class StripeWH_Handler:
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
-            [cust_email]
+            [cust_email, settings.DEFAULT_SALES_EMAIL]
         )        
 
     def handle_event(self, event):
