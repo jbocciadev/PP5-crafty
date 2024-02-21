@@ -37,16 +37,17 @@
                             <div class="div footer-link pb-2">
                                 <a href="#" data-toggle="modal" data-target="#aboutModal">Who we are and what we do</a>
                             </div>
-
                             <div class="div footer-link pb-2">
                                 <a href="#" data-toggle="modal" data-target="#policyModal">Privacy Policy</a>
                             </div>
+
+                            {% if request.user.is_authenticated == False %}
+                                <div class="div footer-link">
+                                    <a href="{% url 'account_signup' %}">Register</a>
+                                </div>
+                            {% endif %}
                             
                             <div class="div footer-link pb-2">
-                                <a href="{% url 'account_signup' %}">Register</a>
-                            </div>
-                            
-                            <div class="div footer-link">
                                 <a href="#" data-toggle="modal" data-target="#subscriberModal">Sign up to our Newsletter</a>
                             </div>
 
