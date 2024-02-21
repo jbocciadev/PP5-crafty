@@ -85,12 +85,9 @@ body {
     border-color: #073B90 !important;
 }
 
-#bag-red {
+#bag-red,
+#bag-red-mobile {
     color:#ef476f !important;
-}
-
-#bag-crafty-blue {
-    color: #073B90 !important;
 }
 
 .text-crafty-blue {
@@ -99,9 +96,14 @@ body {
 #user-crafty-blue,
 #user-crafty-blue-mobile,
 #user-text-crafty-blue,
-#user-text-crafty-blue-mobile {
+#user-text-crafty-blue-mobile,
+#search-crafty-blue-mobile,
+#search-text-crafty-blue-mobile,
+#bag-crafty-blue,
+#bag-crafty-blue-mobile {
     color: #073B90 !important;
 }
+
 .btn-outline-black {
     background: white;
     color: black !important; 
