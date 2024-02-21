@@ -78,7 +78,7 @@ body {
     border-bottom-left-radius: 10rem !important;
     border-color: #073B90 !important;
 }
-#search-btn {
+#search-btn, #search-btn-mobile {
     border-top-right-radius: 10rem !important;
     border-bottom-right-radius: 10rem !important;
     background: #073B90 !important;
