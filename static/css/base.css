@@ -96,13 +96,12 @@ body {
 .text-crafty-blue {
     color: #073B90 !important;
 }
-#user-crafty-blue {
+#user-crafty-blue,
+#user-crafty-blue-mobile,
+#user-text-crafty-blue,
+#user-text-crafty-blue-mobile {
     color: #073B90 !important;
 }
-#user-text-crafty-blue {
-    color: #073B90 !important;
-}
-
 .btn-outline-black {
     background: white;
     color: black !important; 
