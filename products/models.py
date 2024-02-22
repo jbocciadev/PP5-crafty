@@ -33,14 +33,12 @@ class Product(models.Model):
     def __str__(self):
         return str(self.name)
 
-    def calculate_rating(self, *args, **kwargs):
-     
-     """Calculating average rating (to be called whenever a new rating is added)"""
+    def calculate_rating(self, *args, **kwargs):     
+        """Calculating average rating (to be called whenever a new rating is added)"""
 
         reviews = Review.objects.filter(product=self)
         self.rating = reviews.aggregate(Avg('rating'))['rating__avg']
         self.save()
-
 
 
 class Age_group(models.Model):
