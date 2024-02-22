@@ -203,18 +203,120 @@ Issues were classified following the MOSCOW model. The labels thus assigned were
   #### Subscriber
   A third 100% custom model, this keeps track of subscribers to the Mailbos. There are no relationships established as users and non-users can subscribe.
 
+  ---
 
-<!--  -->
+  ### Tech Stack
+
+  The following technologies were used to develop and run this application:
+
+  - Django v3.2.23
+  - Psycopg2 v2.9.9 (PostgreSQL)
+  - Gunicorn v21.2
+  - Bootstrap v4
+  - Stripe v7.6
+  - S3transfer v0.10 (Amazon AWS S3)
+  - Elephant SQL
+  - Git
+  - VSCode
+  - Python
+  - HTML
+  - CSS
+  - JavaScript
+
+## Deployment
+
+The application has been deployed to heroku. The steps taken were:
+
+In heroku:
+
+- Open the "new" menu and click on "Create new app".
+- Fill form fields with app name and region (Europe). Click on "Create app".
+- In the "Settings" section, click on "Add buildpack" and add Python.
+- In the "Settings" section, add the following config variables: ALLOWED_HOSTS, CLOUDINARY_URL, DATABASE_URL, PORT, SECRET_KEY.
+- In "Deployment method", select the GitHub option and provide the repository details. Click on "Connect".
+- Click on "Enable Automatic Deploys" and finally, click on "Deploy Branch".
+
+To attach The Database:
+
+-  Login or sign up to ElephantSQL.
+-  Press create a new instance.
+-  Choose a name and plan. Then click on select region.
+-  Select the closest Data Center to you
+-  Click on "Create Instance".
+-  Go back to the start page and click on your new database.
+-  Copy the URL for the database.
+
+Go back to Heroku and click on the settings tab of your application.
+
+Click on "Reveal config vars".
+
+Add a new config var named DATABASE_URL and paste in the URL from ElephantSQL as the value.
+
+Go back to Gitpod or the IDE you are using and install two more requirements for the database:
+
+`pip3 install dj_databse_url` `pip3 install psycopg2-binary`
+
+Update your requirements.txt file by typing in `pip3 freeze --local > requirements.txt`
+
+Add the DATABASE_URL to your env.py file or environment variables in gitpod.
+
+Go to settings.py and `import dj_database_url`
+
+Comment out the default DATABASES setting.
+
+Add this under the commented out section:
+``` DATABASES = {
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
+
+```
+
+Run migrations for the new database.
+
+In the root directory of your project, create a file called "Procfile" and add web: gunicorn project_name.wsgi so Heroku will know what kind of application it is.
+
+In settings.py add ['app_name.heroku.com', 'localhost'] to ALLOWED_HOSTS.
+
+Commit and push these changes to GitHub.
+
+In the Heroku settings tab of your project update the config vars to the following:
+
+| Key | Value  |
+| -- | -- |
+|AWS_ACCESS_KEY_ID|From AWS in CSV Download|
+|AWS_SECRET_ACCESS_KEY|From AWS in CSV Download|
+|DATABASE_URL|From ElephantSQL dashboard|
+|EMAIL_HOST_PASSWORD|App Password from Email Client|
+|EMAIL_HOST_USER|Email address|
+|SECRET_KEY|Randomly Generated Django Key|
+|STRIPE_PUBLIC_KEY|Publishable key from Stripe Dashboard|
+|STRIPE_SECRET_KEY|Secret key from Stripe Dashboard|
+|STRIPE_WH_SECRET|Signing secret from Stripe Webhooks Endpoint|
+|USE_AWS|True|
+
+If you deploy at the beginning of the project then add the key value of: DISABLE_COLLCETSTATIC and set it to 1. When you have staticfiles to push then remove this variable.
+
+Once the project is completed and you are no longer working on it set DEBUG = False in settings.py.
+
+Log in to Heroku and select the deploy tab on your Heroku App and connect your GitHub account.
+
+Search for your repository and connect it.
+
+Once you have selected the correct repository, scroll down and click "Deploy Branch".
+
+Watch the log as it deploys your project and ensure there are no errors.
+
+If everything is correct it should deploy successfully.
+
+Click on open app at the top of the page to view your deployed app.
 
 
-### Reference:
+### Known issues and further development opportunities
 
-Extending user model:
-https://docs.djangoproject.com/en/dev/topics/auth/customizing/#extending-the-existing-user-model
-https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#proxy
+## Credits
 
-Django models FK on_delete:
-https://sentry.io/answers/django-on-delete/
+### Thanks
+
+### Reference
 
 User authentication:
 https://docs.djangoproject.com/en/4.2/topics/auth/default/ Login required mixin
@@ -228,16 +330,6 @@ https://stackoverflow.com/questions/9304908/how-can-i-filter-a-django-query-with
 Form querysets:
 https://docs.djangoproject.com/en/4.2/ref/models/querysets/ (see Q https://docs.djangoproject.com/en/4.2/ref/models/querysets/#django.db.models.Q and select_related)
 
-Prepopulating forms with current values:
-https://studygyaan.com/django/how-to-give-initial-value-to-model-forms?utm_content=cmp-true
-
-Getting context data:
-https://docs.djangoproject.com/en/4.2/ref/class-based-views/mixins-multiple-object/#django.views.generic.list.MultipleObjectMixin.get_context_data
-
-Form to update team member assignment, based on assigned team:
-https://stackoverflow.com/questions/1697702/how-to-pass-initial-parameter-to-djangos-modelform-instance
-
-
 Querying:
  - Field lookups: https://docs.djangoproject.com/en/4.2/ref/models/querysets/#field-lookups
  - One-to-one relationships: https://docs.djangoproject.com/en/4.2/topics/db/examples/one_to_one/
@@ -245,55 +337,49 @@ Querying:
 Landing page image generated using Leonardo AI:
 https://leonardo.ai/
 
-Meme generator:
-https://imgflip.com/
-
-Bootstrap icons with Django:
-https://pypi.org/project/django-bootstrap-icons/
-
-Form to update team member assignment, based on assigned team // https://stackoverflow.com/questions/1697702/how-to-pass-initial-parameter-to-djangos-modelform-instance
-
 Database ERD:
-https://dbdiagram.io/d
+https://dbdiagram.io/
 
-
-
-===
-
-
-Credits:
-
-https://ardalis.com/working-effectively-github-issues/  Epics, issues, etc
+Github Issues, Epics, etc:
+https://ardalis.com/working-effectively-github-issues/  
 
 https://www.birme.net/  Images optimization for web
 
-Leonardo.ai  AI Image generation
+Building dynamic queries based on multiple criteria
+https://stackoverflow.com/questions/54454051/dynamic-query-django-build and https://forum.djangoproject.com/t/fielderror-related-field-got-invalid-lookup-iexact/16119/2 
 
-https://stackoverflow.com/questions/54454051/dynamic-query-django-build and https://forum.djangoproject.com/t/fielderror-related-field-got-invalid-lookup-iexact/16119/2 for building dynamic queries based on multiple criteria
+Guide on the admin site customization
+https://earthly.dev/blog/customize-django-admin-site/ 
 
-# https://earthly.dev/blog/customize-django-admin-site/ 
-# https://docs.djangoproject.com/en/dev/ref/models/fields/#uuidfield
+Reference on UUID field
+ https://docs.djangoproject.com/en/dev/ref/models/fields/#uuidfield
 
-# https://www.termsfeed.com/privacy-policy-generator/
+Privacy policy generator
+https://www.termsfeed.com/privacy-policy-generator/
 
-# https://www.semrush.com/goodcontent/ai-text-generator/
-# https://favicon.io/favicon-generator/
+Text generator used for About-us section
+https://www.semrush.com/goodcontent/ai-text-generator/
 
-# https://www.smythstoys.com/
+Favicon generator
+https://favicon.io/favicon-generator/
 
-# https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
+Tip on redirecting user back to url where they submitted the form
+https://stackoverflow.com/questions/35796195/how-to-redirect-to-previous-page-in-django-after-post-request
 
-# https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
-# https://stackoverflow.com/questions/60481894/overwrite-django-model-init-method
+Overriding save methon on Django models
+https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
 
-# # https://stackoverflow.com/questions/29492894/how-to-remove-key-from-request-querydict-in-django
+Overriding __init__ methon on Django models
+https://stackoverflow.com/questions/60481894/overwrite-django-model-init-method
 
-# https://stackoverflow.com/questions/74116689/how-to-count-reviews-for-a-product-in-django
+Removing key from request querydict in Django
+https://stackoverflow.com/questions/29492894/how-to-remove-key-from-request-querydict-in-django
 
+Counting reviews for Product
+https://stackoverflow.com/questions/74116689/how-to-count-reviews-for-a-product-in-django
 
-# https://stackoverflow.com/questions/53801805/can-we-use-modelform-to-update-an-existing-instance-of-a-model
+Updating records with Modelform
+https://stackoverflow.com/questions/53801805/can-we-use-modelform-to-update-an-existing-instance-of-a-model
 
-# https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
-
-
-===
+Counting entries in Django model table
+https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
