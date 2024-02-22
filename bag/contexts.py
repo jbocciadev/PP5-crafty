@@ -5,6 +5,7 @@ from products.models import Product
 
 
 def bag_contents(request):
+    """ Adds products to the bag in the user's session """
 
     bag_items = []
     total = 0

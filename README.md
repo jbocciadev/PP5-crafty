@@ -286,4 +286,14 @@ https://stackoverflow.com/questions/54454051/dynamic-query-django-build and http
 # https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
 # https://stackoverflow.com/questions/60481894/overwrite-django-model-init-method
 
+# # https://stackoverflow.com/questions/29492894/how-to-remove-key-from-request-querydict-in-django
+
+# https://stackoverflow.com/questions/74116689/how-to-count-reviews-for-a-product-in-django
+
+
+# https://stackoverflow.com/questions/53801805/can-we-use-modelform-to-update-an-existing-instance-of-a-model
+
+# https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
+
+
 ===

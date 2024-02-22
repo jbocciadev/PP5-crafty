@@ -34,11 +34,12 @@ class UserProfileForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
             self.fields[field].label = False
 
+
 class UserDetailsForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name',)
-    
+
     def __init__(self, *args, **kwargs):
 
         super().__init__(*args, **kwargs)

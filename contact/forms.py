@@ -1,6 +1,7 @@
 from django import forms
 from .models import Contact, Subscriber
 
+
 class ContactForm(forms.ModelForm):
 
     class Meta:
@@ -9,6 +10,7 @@ class ContactForm(forms.ModelForm):
             'subject',
             'contact_text',
         )
+
 
 class SubscriberForm(forms.ModelForm):
 

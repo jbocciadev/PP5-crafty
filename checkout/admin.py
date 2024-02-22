@@ -1,11 +1,17 @@
 from django.contrib import admin
 from .models import Order, OrderLineItem
 
+
 class OrderLineItemAdminInline(admin.TabularInline):
+    """ Defines the order line item display in /admin/ """
+
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
 
+
 class OrderAdmin(admin.ModelAdmin):
+    """ Defines the order display in /admin/ """
+
     inlines = (OrderLineItemAdminInline,)
 
     readonly_fields = ('order_number', 'date',
@@ -25,5 +31,6 @@ class OrderAdmin(admin.ModelAdmin):
                     'grand_total',)
 
     ordering = ('-date',)
+
 
 admin.site.register(Order, OrderAdmin)

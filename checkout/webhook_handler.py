@@ -11,6 +11,7 @@ import json
 import time
 import stripe
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -32,7 +33,7 @@ class StripeWH_Handler:
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email, settings.DEFAULT_SALES_EMAIL]
-        )        
+        )
 
     def handle_event(self, event):
         """
@@ -65,7 +66,7 @@ class StripeWH_Handler:
             if value == "":
                 shipping_details.address[field] = None
 
-         # Update profile information if save_info was checked
+        # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':

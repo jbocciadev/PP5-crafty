@@ -6,7 +6,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import QueryDict, HttpResponseRedirect
 
-
 from .models import Contact, Subscriber
 from .forms import ContactForm, SubscriberForm
 
@@ -17,7 +16,6 @@ def submit_contact(request):
         form = ContactForm(request.POST)
         print(form.is_valid())
         if form.is_valid():
-            # print("form is valid")
             contact = form.save(commit=False)
             user = get_object_or_404(User, pk=request.user.id)
             contact.user = user
@@ -46,8 +44,7 @@ def submit_contact(request):
 
 
 def subscribe(request):
-    # https://stackoverflow.com/questions/29492894/how-to-remove-key-from-request-querydict-in-django
-    # Cleaning-up the form to get rid of the next field and create new entry in subscribers table
+    """ Cleaning-up the form to get rid of the next field and create new entry in subscribers table """
     query = QueryDict.copy(request.POST)
     next = query.pop('next', '/')[0]
 
@@ -105,6 +102,7 @@ def unsubscribe(request, subscriber_id):
             'subscriber_id': subscriber_id,
         }
     return render(request, 'contact/unsubscribe.html', context)
+
 
 def unsubscribe_blank(request):
     # Handles 500 error for url .../unsubscribe/ without arguments.

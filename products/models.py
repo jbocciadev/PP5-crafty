@@ -34,14 +34,13 @@ class Product(models.Model):
         return str(self.name)
 
     def calculate_rating(self, *args, **kwargs):
-#     '''Calculating average rating (to be called
-#     whenever a new rating is added)'''
+     
+     """Calculating average rating (to be called whenever a new rating is added)"""
 
         reviews = Review.objects.filter(product=self)
         self.rating = reviews.aggregate(Avg('rating'))['rating__avg']
         self.save()
-# https://stackoverflow.com/questions/74116689/how-to-count-reviews-for-a-product-in-django
-        
+
 
 
 class Age_group(models.Model):
@@ -71,7 +70,6 @@ class Review(models.Model):
         (5, '5'),
     ]
     rating = models.IntegerField(choices=rating_choices)
-    # rating = models.IntegerField(null=False, blank=False, default=0)
     review = models.TextField(null=False, blank=True, default='')
 
     def save(self, *args, **kwargs):

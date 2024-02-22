@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Contact, Subscriber
 
+
 class ContactAdmin(admin.ModelAdmin):
     list_display = (
         'case_id',
@@ -14,6 +15,7 @@ class ContactAdmin(admin.ModelAdmin):
         'case_id',
     )
 
+
 class SubscriberAdmin(admin.ModelAdmin):
     list_display = (
         'subscriber_id',
@@ -23,6 +25,3 @@ class SubscriberAdmin(admin.ModelAdmin):
 
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Subscriber, SubscriberAdmin)
-
-
-# https://earthly.dev/blog/customize-django-admin-site/

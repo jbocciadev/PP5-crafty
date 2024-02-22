@@ -4,9 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category, Review
-from checkout.models import Order, OrderLineItem
 from profiles.models import UserProfile as Profile
+from checkout.models import Order, OrderLineItem
+
+from .models import Product, Category, Review
 from .forms import ProductForm, ProductReviewForm
 
 
@@ -68,7 +69,7 @@ def all_products(request):
         if 'age_group' in request.GET:
             age_group = request.GET['age_group']
             compound_q &= Q(age_group__name__iexact=age_group)
-        
+
         products = products.filter(compound_q)   
 
     current_sorting = f'{sort}_{direction}'
@@ -90,7 +91,6 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     # Append number of reviews to product
     product.num_reviews = Review.objects.filter(product=product).count()
-    # https://stackoverflow.com/questions/15635790/how-to-count-the-number-of-rows-in-a-database-table-in-django#:~:text=You%20can%20either%20use%20Python's,the%20provided%20count()%20method.&text=You%20should%20also%20go%20through%20the%20QuerySet%20API%20Documentation%20for%20more%20information.
     reviews = Review.objects.filter(product=product)
 
     user = None
@@ -126,7 +126,6 @@ def product_detail(request, product_id):
         context['reviews'] = reviews
     if review_form:
         context['review_form'] = review_form
-
 
     return render(request, 'products/product_detail.html', context)
 
@@ -175,7 +174,7 @@ def delete_product(request, product_id):
 @login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
-   
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -201,6 +200,7 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @login_required
 def submit_review(request, product_id):
     """ Submit a review for the product """
@@ -224,6 +224,7 @@ def submit_review(request, product_id):
 
     return redirect(reverse('product_detail', args=[product_id]))
 
+
 @login_required
 def edit_review(request, review_id):
 
@@ -238,10 +239,9 @@ def edit_review(request, review_id):
                 messages.success(request, 'Review amended, thank you!')
         else:
             messages.error(request, 'It seems You are not allowed to do that! You can only edit reviews you have submitted yourself.')
-            
+
     return redirect(reverse('product_detail', args=[product.id]))
 
-# https://stackoverflow.com/questions/53801805/can-we-use-modelform-to-update-an-existing-instance-of-a-model
 
 @login_required
 def delete_review(request, review_id):
