@@ -60,7 +60,7 @@ class Review(models.Model):
                              blank=False, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, null=False,
                                 blank=False, on_delete=models.CASCADE)
-    rating_choices=[
+    rating_choices = [
         (1, '1'),
         (2, '2'),
         (3, '3'),
