@@ -79,7 +79,3 @@ class Review(models.Model):
         every time a new review is added'''
         super(Review, self).save(*args, **kwargs)
         self.product.calculate_rating(self.product)
-    
-        
-# https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
-# https://stackoverflow.com/questions/60481894/overwrite-django-model-init-method
