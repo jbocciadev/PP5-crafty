@@ -93,6 +93,12 @@ From early in the planning stage of the project, research was done on SEO-specif
 
 ---
 
+### Registration with Google search console
+  The site has been submitted to the google search console to benefit from the metrics that this site provides.
+  ![google search console](/readme-files/crafty-google-analytics-dashboard.PNG)
+
+---
+
 ## Development
 
 ### Version control
@@ -170,6 +176,31 @@ Issues were classified following the MOSCOW model. The labels thus assigned were
 
 ---
 
+## Functionality
+
+  ### User signup, login and logut
+  Users can signup to create an account to Crafty. A email confirmation message is sent to the user on registration. Once the email is confirmed, the user can access their personal profile.
+
+  ### Profile/Account
+  ![Profile](/readme-files/crafty-profile-snip.PNG)
+  The Profile section is divided in 4 sub-sections:
+  - Personal details: contains details about the user account.
+  - Delivery information: stores the default delivery details for the user.
+  - Order History: contains a table with a breakdown of the orders submitted by the user.
+  - Contact: here, the user can submit contact queries via a form for any issues or concerns that may arise. A copy of the contact form is sent to the user and another is sent to the support team mailbox.
+
+  ### Products
+  From the main navigation bar, the user can access the products, either as a whole, or as smaller subsets, labelled accordingly by their respective groupings. By clicking/tapping on an individual product, the user is redirected to that product's detail page, where they dcan see further information, including reviews, and add the item to their bag. When a new item is added, removed, or its quantity is amended, a feedback toast message is displayed for the user.
+
+  ### Bag
+  The bag page displays an itemised breakdown of the products the user has selected for purchasing, with quantities that can be updated, and option to remove the individual item altogether. A summary of the subtotals is displayed at the bottom-right corner.Below this summary, there is a checkout button that redirects the user to the final checkout page.
+
+  ### Checkout
+  This page contains a form for the user to submit the required details for the purchase, along with a summary of the items that are about to be acquired. The payment is handled by Stripe, which ensures the card's validity and processes the charge. On successful checkout, the user is redirected to the checkout success page where a further order summary is presented to them. A confirmation email is sent to the user and sales team mailbox and a feedback message is presented.
+
+  ### Newsletter signup
+  Both registered users and non-registered users can register to receive our newsletter by clicking/tapping on the footer link and completing the form presented. A confirmation email is sent to the user with a unique link to unsubscribe if they so choose.
+
 ## Under the Proverbial Hood
 
   ### Models
@@ -180,7 +211,7 @@ Issues were classified following the MOSCOW model. The labels thus assigned were
   Standard Django user model
 
   #### User Profile
-  With a 1-1 relationship withthe User model, this model stores complementary contact details for the user.
+  With a 1-1 relationship with the User model, this model stores complementary contact details for the user.
 
   #### Category, Age group and Topic
   These single-field models are designed to add flexibility for site management.
@@ -222,6 +253,8 @@ Issues were classified following the MOSCOW model. The labels thus assigned were
   - HTML
   - CSS
   - JavaScript
+
+---
 
 ## Deployment
 
@@ -309,14 +342,31 @@ If everything is correct it should deploy successfully.
 
 Click on open app at the top of the page to view your deployed app.
 
+---
 
 ### Known issues and further development opportunities
+  - Some styling issues remain. Due to time constraints and minor impact, these were left and can be dealt with at a later time.
+  - On some instances, responsiveness may not be as smooth as desired, but it is not a serious issue.
+  - Multiple opportunities lie ahead for Crafty to move forward. An FAQs section was initially planned, but it needed to be discarded for this iteration. Also, a blog with articles, videos, step-by-step guides and comments can be developed. Finally, the Contact section can be developed to present messages from the support team as response to the customers' queries. A custom platform could also be developed to facilitate the work of the staff, while preventing them from accessing the /admin/ portal.
 
-## Credits
 
-### Thanks
+## Thanks
 
-### Reference
+First and most importantly, to my family. My wife and children who have carried me along this journey are the best one could ask for and I owe them everything.
+
+To my friend Paco, who always encouraged me to pursue a career in coding, muchas gracias, tío!
+
+To my cohort facilitator Alan, a huge thanks for your patience and support. My Mentor Spencer who is so knowledgeable and yet so down-to-earth has always been good at nudging me in the right direction, thanks!
+
+To the broad team at Code Institute: facilitators, student support, tutors, coordinators and those guys whose role is not quite clear and yet keep popping up on slack to say the right word at the right time, thank you and congratulations. You put together a great show!
+
+To my fellow cohort colleagues and hackathon teammates, thank you for putting up with me during calls. I hope I run into you in the future.
+
+To the bigger names at Code Institute, a massive thank you for having made this. The course, along with the support network and all the resources are unbelievable and so invaluable!
+
+As usual, a big thank you to Prof. Malan for opening my eyes and transmitting such love for this art that is software development.
+
+### Credits and Reference
 
 User authentication:
 https://docs.djangoproject.com/en/4.2/topics/auth/default/ Login required mixin
