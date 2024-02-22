@@ -270,7 +270,10 @@ Issues were classified following the MOSCOW model. The labels thus assigned were
 
   ### Manual testing
   Please see the attached file for manual [testing matrix](/readme-files/pp5-crafty_Testing_Matrix.pdf).
-  
+
+  ### VS Code linter
+  Ruff Visual Studio Code extension was used as a linter for all the code. Minor flags remain as in many cases, either the issue is line length and I failed to find a way to split it into smaller lines, or the issue raised is not an issue per se as the code would require being written is a specific manner.
+
 ---
 
 ## Deployment
@@ -335,6 +338,8 @@ In the Heroku settings tab of your project update the config vars to the followi
 |AWS_ACCESS_KEY_ID|From AWS in CSV Download|
 |AWS_SECRET_ACCESS_KEY|From AWS in CSV Download|
 |DATABASE_URL|From ElephantSQL dashboard|
+|DEFAULT_SALES_EMAIL|Email address to be CCed on sales emails|
+|DEFAULT_SUPPORT_EMAIL|Email address to be CCed on support emails|
 |EMAIL_HOST_PASSWORD|App Password from Email Client|
 |EMAIL_HOST_USER|Email address|
 |SECRET_KEY|Randomly Generated Django Key|
@@ -345,7 +350,7 @@ In the Heroku settings tab of your project update the config vars to the followi
 
 If you deploy at the beginning of the project then add the key value of: DISABLE_COLLCETSTATIC and set it to 1. When you have staticfiles to push then remove this variable.
 
-Once the project is completed and you are no longer working on it set DEBUG = False in settings.py.
+Once the project is completed and you are no longer working on it set DEBUG = False in settings.py. Alternatively, the system will look for a "DEVELOPMENT" variable in the environment. Please ensure there is no variable with that name, or the site will be deployed in DEBUG mode exposing important credentials.
 
 Log in to Heroku and select the deploy tab on your Heroku App and connect your GitHub account.
 
@@ -384,6 +389,7 @@ To the bigger names at Code Institute, a massive thank you for having made this.
 As usual, a big thank you to Prof. Malan for opening my eyes and transmitting such love for this art that is software development.
 
 ### Credits and Reference
+Below is a list of sites, blog posts, guides, etc. that have been crucial to this project's success.
 
 User authentication:
 https://docs.djangoproject.com/en/4.2/topics/auth/default/ Login required mixin
