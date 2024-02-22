@@ -256,6 +256,23 @@ Issues were classified following the MOSCOW model. The labels thus assigned were
 
 ---
 
+## Testing
+
+  ### Google Lighthouse
+  ![Lighthouse](/readme-files/crafty-lighthouse-dt.PNG)
+  The issues identified are minor and do depend mostly on external resources.
+
+  ### HTML code validation
+  ![html snip](/readme-files/W3-HTML-ss.PNG)
+
+  ### CSS code validation
+  ![css snip](/readme-files/W3-CSS-ss.PNG)
+
+  ### Manual testing
+  Please see the attached file for manual [testing matrix](/readme-files/pp5-crafty_Testing_Matrix.pdf).
+  
+---
+
 ## Deployment
 
 The application has been deployed to heroku. The steps taken were:
