@@ -369,9 +369,9 @@ Click on open app at the top of the page to view your deployed app.
 
 ## Thanks
 
-First and most importantly, to my family. My wife and children who have carried me along this journey are the best one could ask for and I owe them everything.
+First and most importantly, to my family. My wife and children who have carried me along this journey are the best one could ask for and I owe them everything. Also my parents who have always worked hard to give me the best of everything they could possible provide and set an exceptional example of high standards, kindness, generosity and character.
 
-To my friend Paco, who always encouraged me to pursue a career in coding, muchas gracias, tío!
+To my friends Juan and Paco, who always encouraged me to pursue a career in coding, muchas gracias!
 
 To my cohort facilitator Alan, a huge thanks for your patience and support. My Mentor Spencer who is so knowledgeable and yet so down-to-earth has always been good at nudging me in the right direction, thanks!
 
