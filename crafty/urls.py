@@ -1,3 +1,4 @@
+import os
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -27,4 +28,5 @@ urlpatterns = [
 
 handler404 = 'crafty.views.handler404'
 
-handler500 = 'crafty.views.handler500'
+if 'DEVELOPMENT' not in os.environ:
+    handler500 = 'crafty.views.handler500'
