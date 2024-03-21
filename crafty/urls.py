@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from .views import handler404, handler500
 
 
-# Uncomment lines 11, 12, and 23 to test server error 500 page. Navigate to
+# Uncomment lines 12, 13, and 24 to test server error 500 page. Navigate to
 # https://pp5-crafty-015973d8fb4f.herokuapp.com/500
 # def view_500(request):
 #     raise Exception("Test error 500")
@@ -21,7 +21,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
     path('contact/', include('contact.urls')),
-    path('500/', view_500),
+    # path('500/', view_500),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
