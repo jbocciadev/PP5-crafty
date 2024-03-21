@@ -27,4 +27,4 @@ urlpatterns = [
 
 handler404 = 'crafty.views.handler404'
 
-handler500 = 'crafty.views.handler500'
+# handler500 = 'crafty.views.handler500'
