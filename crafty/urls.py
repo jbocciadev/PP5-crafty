@@ -20,11 +20,11 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
     path('contact/', include('contact.urls')),
-    # path('500/', view_500),
+    path('500/', view_500),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 handler404 = 'crafty.views.handler404'
 
-# handler500 = 'crafty.views.handler500'
+handler500 = 'crafty.views.handler500'
